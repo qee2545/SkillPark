@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8001B29D1BE1310400B8786F /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8001B29C1BE1310400B8786F /* CategoryModel.m */; settings = {ASSET_TAGS = (); }; };
+		80040BC61BD7817C00963047 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80040BC51BD7817C00963047 /* main.m */; };
+		80040BC91BD7817C00963047 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80040BC81BD7817C00963047 /* AppDelegate.m */; };
+		80040BCF1BD7817C00963047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80040BCD1BD7817C00963047 /* Main.storyboard */; };
+		80040BD21BD7817C00963047 /* SkillPark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80040BD01BD7817C00963047 /* SkillPark.xcdatamodeld */; };
+		80040BD71BD7817C00963047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80040BD51BD7817C00963047 /* LaunchScreen.storyboard */; };
+		80040BE91BD78ABF00963047 /* SkillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80040BE61BD78ABF00963047 /* SkillModel.m */; settings = {ASSET_TAGS = (); }; };
+		80040BEA1BD78ABF00963047 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80040BE81BD78ABF00963047 /* UserModel.m */; settings = {ASSET_TAGS = (); }; };
+		800484B81BE081CF00D26ABC /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 800484B71BE081CF00D26ABC /* Utility.m */; settings = {ASSET_TAGS = (); }; };
+		800484BC1BE0AC0C00D26ABC /* MessageListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800484BB1BE0AC0C00D26ABC /* MessageListTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		800484BF1BE0B5A900D26ABC /* MessageListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 800484BE1BE0B5A900D26ABC /* MessageListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		800974DD1BDDF83B0042ED8D /* MainCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800974DC1BDDF83B0042ED8D /* MainCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8021F9FB1BD79D3300C0E3BF /* ShowSkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8021F9FA1BD79D3300C0E3BF /* ShowSkillViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8021F9FE1BD7BD3E00C0E3BF /* PersonCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8021F9FD1BD7BD3E00C0E3BF /* PersonCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8021FA011BD7BE6800C0E3BF /* PersonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8021FA001BD7BE6800C0E3BF /* PersonCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		802A419F1BE33EC100367CBC /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 802A419E1BE33EC100367CBC /* Global.m */; settings = {ASSET_TAGS = (); }; };
+		802A41A21BE3478400367CBC /* CommentGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802A41A11BE3478400367CBC /* CommentGroupModel.m */; settings = {ASSET_TAGS = (); }; };
+		802B4DBB1BDBF808004F127A /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802B4DBA1BDBF808004F127A /* TestViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8040C24E1BDA067300B5FF23 /* SearchSkillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8040C24D1BDA067300B5FF23 /* SearchSkillTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		80B7B72D1BE21F6C00DF54CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B7B72C1BE21F6C00DF54CD /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
+		80B7B7361BE2927400DF54CD /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B7351BE2927400DF54CD /* CommentModel.m */; settings = {ASSET_TAGS = (); }; };
+		80F9D9F61BDE83CC0082EECD /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D9F41BDE83CC0082EECD /* MainCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		80F9D9F71BDE83CC0082EECD /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80F9D9F51BDE83CC0082EECD /* MainCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		80FC75011BDF5DE4007E9831 /* PreferCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC75001BDF5DE4007E9831 /* PreferCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		80FC75081BDF7C63007E9831 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC75061BDF7C63007E9831 /* SearchTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		80FC75091BDF7C63007E9831 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80FC75071BDF7C63007E9831 /* SearchTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		80FC750C1BDF9623007E9831 /* SelfMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC750B1BDF9623007E9831 /* SelfMessageTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		80FC750F1BDF9645007E9831 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC750E1BDF9645007E9831 /* MessageViewController.m */; settings = {ASSET_TAGS = (); }; };
+		80FC75121BDF9670007E9831 /* SomeoneMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FC75111BDF9670007E9831 /* SomeoneMessageTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		80FF57851BD8ADEF00F14085 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FF57841BD8ADEF00F14085 /* HeaderCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
+		EAE9D9F8F1E40C1143DF65B2 /* libPods-SkillPark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ECB31CC45DD4017C4B13C18 /* libPods-SkillPark.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6ECB31CC45DD4017C4B13C18 /* libPods-SkillPark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SkillPark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7286057672740C16F345F20A /* Pods-SkillPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkillPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-SkillPark/Pods-SkillPark.release.xcconfig"; sourceTree = "<group>"; };
+		8001B29B1BE1310400B8786F /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
+		8001B29C1BE1310400B8786F /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
+		80040BC11BD7817C00963047 /* SkillPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkillPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80040BC51BD7817C00963047 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		80040BC71BD7817C00963047 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		80040BC81BD7817C00963047 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		80040BCE1BD7817C00963047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		80040BD11BD7817C00963047 /* SkillPark.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SkillPark.xcdatamodel; sourceTree = "<group>"; };
+		80040BD61BD7817C00963047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		80040BD81BD7817C00963047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80040BE51BD78ABF00963047 /* SkillModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillModel.h; sourceTree = "<group>"; };
+		80040BE61BD78ABF00963047 /* SkillModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillModel.m; sourceTree = "<group>"; };
+		80040BE71BD78ABF00963047 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		80040BE81BD78ABF00963047 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		800484B61BE081CF00D26ABC /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		800484B71BE081CF00D26ABC /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		800484BA1BE0AC0C00D26ABC /* MessageListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListTableViewController.h; sourceTree = "<group>"; };
+		800484BB1BE0AC0C00D26ABC /* MessageListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListTableViewController.m; sourceTree = "<group>"; };
+		800484BD1BE0B5A900D26ABC /* MessageListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListTableViewCell.h; sourceTree = "<group>"; };
+		800484BE1BE0B5A900D26ABC /* MessageListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListTableViewCell.m; sourceTree = "<group>"; };
+		800974DB1BDDF83B0042ED8D /* MainCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionViewController.h; sourceTree = "<group>"; };
+		800974DC1BDDF83B0042ED8D /* MainCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollectionViewController.m; sourceTree = "<group>"; };
+		8021F9F91BD79D3200C0E3BF /* ShowSkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowSkillViewController.h; sourceTree = "<group>"; };
+		8021F9FA1BD79D3300C0E3BF /* ShowSkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowSkillViewController.m; sourceTree = "<group>"; };
+		8021F9FC1BD7BD3E00C0E3BF /* PersonCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCollectionViewController.h; sourceTree = "<group>"; };
+		8021F9FD1BD7BD3E00C0E3BF /* PersonCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCollectionViewController.m; sourceTree = "<group>"; };
+		8021F9FF1BD7BE6800C0E3BF /* PersonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCollectionViewCell.h; sourceTree = "<group>"; };
+		8021FA001BD7BE6800C0E3BF /* PersonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCollectionViewCell.m; sourceTree = "<group>"; };
+		802A419D1BE33EC100367CBC /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		802A419E1BE33EC100367CBC /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		802A41A01BE3478400367CBC /* CommentGroupModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentGroupModel.h; sourceTree = "<group>"; };
+		802A41A11BE3478400367CBC /* CommentGroupModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentGroupModel.m; sourceTree = "<group>"; };
+		802B4DB91BDBF808004F127A /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		802B4DBA1BDBF808004F127A /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		8040C24C1BDA067300B5FF23 /* SearchSkillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSkillTableViewController.h; sourceTree = "<group>"; };
+		8040C24D1BDA067300B5FF23 /* SearchSkillTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSkillTableViewController.m; sourceTree = "<group>"; };
+		80B7B72C1BE21F6C00DF54CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		80B7B7341BE2927400DF54CD /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		80B7B7351BE2927400DF54CD /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		80F9D9F31BDE83CC0082EECD /* MainCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionViewCell.h; sourceTree = "<group>"; };
+		80F9D9F41BDE83CC0082EECD /* MainCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollectionViewCell.m; sourceTree = "<group>"; };
+		80F9D9F51BDE83CC0082EECD /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
+		80FC74FF1BDF5DE4007E9831 /* PreferCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferCollectionViewCell.h; sourceTree = "<group>"; };
+		80FC75001BDF5DE4007E9831 /* PreferCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferCollectionViewCell.m; sourceTree = "<group>"; };
+		80FC75051BDF7C63007E9831 /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		80FC75061BDF7C63007E9831 /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
+		80FC75071BDF7C63007E9831 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		80FC750A1BDF9623007E9831 /* SelfMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfMessageTableViewCell.h; sourceTree = "<group>"; };
+		80FC750B1BDF9623007E9831 /* SelfMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfMessageTableViewCell.m; sourceTree = "<group>"; };
+		80FC750D1BDF9645007E9831 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		80FC750E1BDF9645007E9831 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		80FC75101BDF9670007E9831 /* SomeoneMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeoneMessageTableViewCell.h; sourceTree = "<group>"; };
+		80FC75111BDF9670007E9831 /* SomeoneMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeoneMessageTableViewCell.m; sourceTree = "<group>"; };
+		80FF57831BD8ADEF00F14085 /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		80FF57841BD8ADEF00F14085 /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		FDA68AC4309AA9AEA4578A09 /* Pods-SkillPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkillPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SkillPark/Pods-SkillPark.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80040BBE1BD7817C00963047 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAE9D9F8F1E40C1143DF65B2 /* libPods-SkillPark.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		80040BB81BD7817C00963047 = {
+			isa = PBXGroup;
+			children = (
+				80040BC31BD7817C00963047 /* SkillPark */,
+				80040BC21BD7817C00963047 /* Products */,
+				B68F82B7058A5BF16F04ADFB /* Pods */,
+				83C8567A3EFFF3B58D06AA29 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		80040BC21BD7817C00963047 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80040BC11BD7817C00963047 /* SkillPark.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80040BC31BD7817C00963047 /* SkillPark */ = {
+			isa = PBXGroup;
+			children = (
+				802B4DB81BDBF6EF004F127A /* Controllers */,
+				80040BEB1BD78BF300963047 /* Cell */,
+				800484B91BE082C500D26ABC /* Class */,
+				802B4DB71BDBF6D5004F127A /* Storyboard */,
+				80040BE41BD78A6200963047 /* Model */,
+				80040BC71BD7817C00963047 /* AppDelegate.h */,
+				80040BC81BD7817C00963047 /* AppDelegate.m */,
+				80040BD81BD7817C00963047 /* Info.plist */,
+				80040BD01BD7817C00963047 /* SkillPark.xcdatamodeld */,
+				80040BC41BD7817C00963047 /* Supporting Files */,
+			);
+			path = SkillPark;
+			sourceTree = "<group>";
+		};
+		80040BC41BD7817C00963047 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				80B7B72C1BE21F6C00DF54CD /* Assets.xcassets */,
+				80040BC51BD7817C00963047 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80040BE41BD78A6200963047 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				80B7B7341BE2927400DF54CD /* CommentModel.h */,
+				80B7B7351BE2927400DF54CD /* CommentModel.m */,
+				8001B29B1BE1310400B8786F /* CategoryModel.h */,
+				8001B29C1BE1310400B8786F /* CategoryModel.m */,
+				80040BE51BD78ABF00963047 /* SkillModel.h */,
+				80040BE61BD78ABF00963047 /* SkillModel.m */,
+				80040BE71BD78ABF00963047 /* UserModel.h */,
+				80040BE81BD78ABF00963047 /* UserModel.m */,
+				802A41A01BE3478400367CBC /* CommentGroupModel.h */,
+				802A41A11BE3478400367CBC /* CommentGroupModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		80040BEB1BD78BF300963047 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				80F9D9F31BDE83CC0082EECD /* MainCollectionViewCell.h */,
+				80F9D9F41BDE83CC0082EECD /* MainCollectionViewCell.m */,
+				80F9D9F51BDE83CC0082EECD /* MainCollectionViewCell.xib */,
+				8021F9FF1BD7BE6800C0E3BF /* PersonCollectionViewCell.h */,
+				8021FA001BD7BE6800C0E3BF /* PersonCollectionViewCell.m */,
+				80FC74FF1BDF5DE4007E9831 /* PreferCollectionViewCell.h */,
+				80FC75001BDF5DE4007E9831 /* PreferCollectionViewCell.m */,
+				80FF57831BD8ADEF00F14085 /* HeaderCollectionReusableView.h */,
+				80FF57841BD8ADEF00F14085 /* HeaderCollectionReusableView.m */,
+				80FC75051BDF7C63007E9831 /* SearchTableViewCell.h */,
+				80FC75061BDF7C63007E9831 /* SearchTableViewCell.m */,
+				80FC75071BDF7C63007E9831 /* SearchTableViewCell.xib */,
+				80FC750A1BDF9623007E9831 /* SelfMessageTableViewCell.h */,
+				80FC750B1BDF9623007E9831 /* SelfMessageTableViewCell.m */,
+				80FC75101BDF9670007E9831 /* SomeoneMessageTableViewCell.h */,
+				80FC75111BDF9670007E9831 /* SomeoneMessageTableViewCell.m */,
+				800484BD1BE0B5A900D26ABC /* MessageListTableViewCell.h */,
+				800484BE1BE0B5A900D26ABC /* MessageListTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		800484B91BE082C500D26ABC /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				802A419D1BE33EC100367CBC /* Global.h */,
+				802A419E1BE33EC100367CBC /* Global.m */,
+				800484B61BE081CF00D26ABC /* Utility.h */,
+				800484B71BE081CF00D26ABC /* Utility.m */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		802B4DB71BDBF6D5004F127A /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				80040BCD1BD7817C00963047 /* Main.storyboard */,
+				80040BD51BD7817C00963047 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		802B4DB81BDBF6EF004F127A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8040C24C1BDA067300B5FF23 /* SearchSkillTableViewController.h */,
+				8040C24D1BDA067300B5FF23 /* SearchSkillTableViewController.m */,
+				8021F9FC1BD7BD3E00C0E3BF /* PersonCollectionViewController.h */,
+				8021F9FD1BD7BD3E00C0E3BF /* PersonCollectionViewController.m */,
+				8021F9F91BD79D3200C0E3BF /* ShowSkillViewController.h */,
+				8021F9FA1BD79D3300C0E3BF /* ShowSkillViewController.m */,
+				800974DB1BDDF83B0042ED8D /* MainCollectionViewController.h */,
+				800974DC1BDDF83B0042ED8D /* MainCollectionViewController.m */,
+				80FC750D1BDF9645007E9831 /* MessageViewController.h */,
+				80FC750E1BDF9645007E9831 /* MessageViewController.m */,
+				800484BA1BE0AC0C00D26ABC /* MessageListTableViewController.h */,
+				800484BB1BE0AC0C00D26ABC /* MessageListTableViewController.m */,
+				802B4DB91BDBF808004F127A /* TestViewController.h */,
+				802B4DBA1BDBF808004F127A /* TestViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		83C8567A3EFFF3B58D06AA29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6ECB31CC45DD4017C4B13C18 /* libPods-SkillPark.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B68F82B7058A5BF16F04ADFB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FDA68AC4309AA9AEA4578A09 /* Pods-SkillPark.debug.xcconfig */,
+				7286057672740C16F345F20A /* Pods-SkillPark.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		80040BC01BD7817C00963047 /* SkillPark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80040BDB1BD7817C00963047 /* Build configuration list for PBXNativeTarget "SkillPark" */;
+			buildPhases = (
+				5210B19FD95AE1738790D045 /* Check Pods Manifest.lock */,
+				80040BBD1BD7817C00963047 /* Sources */,
+				80040BBE1BD7817C00963047 /* Frameworks */,
+				80040BBF1BD7817C00963047 /* Resources */,
+				BE2F2159C41B3D496C82F512 /* Embed Pods Frameworks */,
+				E76ECA9AB10EDEF72DA4D4C6 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SkillPark;
+			productName = SkillPark;
+			productReference = 80040BC11BD7817C00963047 /* SkillPark.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80040BB91BD7817C00963047 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = qee;
+				TargetAttributes = {
+					80040BC01BD7817C00963047 = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = S5CU6N9G2L;
+					};
+				};
+			};
+			buildConfigurationList = 80040BBC1BD7817C00963047 /* Build configuration list for PBXProject "SkillPark" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 80040BB81BD7817C00963047;
+			productRefGroup = 80040BC21BD7817C00963047 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				80040BC01BD7817C00963047 /* SkillPark */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80040BBF1BD7817C00963047 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80040BD71BD7817C00963047 /* LaunchScreen.storyboard in Resources */,
+				80040BCF1BD7817C00963047 /* Main.storyboard in Resources */,
+				80F9D9F71BDE83CC0082EECD /* MainCollectionViewCell.xib in Resources */,
+				80FC75091BDF7C63007E9831 /* SearchTableViewCell.xib in Resources */,
+				80B7B72D1BE21F6C00DF54CD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5210B19FD95AE1738790D045 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BE2F2159C41B3D496C82F512 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SkillPark/Pods-SkillPark-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E76ECA9AB10EDEF72DA4D4C6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SkillPark/Pods-SkillPark-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80040BBD1BD7817C00963047 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80FC75011BDF5DE4007E9831 /* PreferCollectionViewCell.m in Sources */,
+				8001B29D1BE1310400B8786F /* CategoryModel.m in Sources */,
+				802A41A21BE3478400367CBC /* CommentGroupModel.m in Sources */,
+				802B4DBB1BDBF808004F127A /* TestViewController.m in Sources */,
+				80FC75081BDF7C63007E9831 /* SearchTableViewCell.m in Sources */,
+				800484B81BE081CF00D26ABC /* Utility.m in Sources */,
+				80F9D9F61BDE83CC0082EECD /* MainCollectionViewCell.m in Sources */,
+				80040BC91BD7817C00963047 /* AppDelegate.m in Sources */,
+				80FC75121BDF9670007E9831 /* SomeoneMessageTableViewCell.m in Sources */,
+				800484BC1BE0AC0C00D26ABC /* MessageListTableViewController.m in Sources */,
+				8040C24E1BDA067300B5FF23 /* SearchSkillTableViewController.m in Sources */,
+				80040BEA1BD78ABF00963047 /* UserModel.m in Sources */,
+				8021F9FE1BD7BD3E00C0E3BF /* PersonCollectionViewController.m in Sources */,
+				80FC750C1BDF9623007E9831 /* SelfMessageTableViewCell.m in Sources */,
+				80FC750F1BDF9645007E9831 /* MessageViewController.m in Sources */,
+				80FF57851BD8ADEF00F14085 /* HeaderCollectionReusableView.m in Sources */,
+				802A419F1BE33EC100367CBC /* Global.m in Sources */,
+				80040BC61BD7817C00963047 /* main.m in Sources */,
+				80040BE91BD78ABF00963047 /* SkillModel.m in Sources */,
+				80040BD21BD7817C00963047 /* SkillPark.xcdatamodeld in Sources */,
+				8021FA011BD7BE6800C0E3BF /* PersonCollectionViewCell.m in Sources */,
+				80B7B7361BE2927400DF54CD /* CommentModel.m in Sources */,
+				800484BF1BE0B5A900D26ABC /* MessageListTableViewCell.m in Sources */,
+				8021F9FB1BD79D3300C0E3BF /* ShowSkillViewController.m in Sources */,
+				800974DD1BDDF83B0042ED8D /* MainCollectionViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		80040BCD1BD7817C00963047 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80040BCE1BD7817C00963047 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		80040BD51BD7817C00963047 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80040BD61BD7817C00963047 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		80040BD91BD7817C00963047 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		80040BDA1BD7817C00963047 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		80040BDC1BD7817C00963047 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDA68AC4309AA9AEA4578A09 /* Pods-SkillPark.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SkillPark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qee.SkillPark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		80040BDD1BD7817C00963047 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7286057672740C16F345F20A /* Pods-SkillPark.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SkillPark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qee.SkillPark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		80040BBC1BD7817C00963047 /* Build configuration list for PBXProject "SkillPark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80040BD91BD7817C00963047 /* Debug */,
+				80040BDA1BD7817C00963047 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80040BDB1BD7817C00963047 /* Build configuration list for PBXNativeTarget "SkillPark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80040BDC1BD7817C00963047 /* Debug */,
+				80040BDD1BD7817C00963047 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		80040BD01BD7817C00963047 /* SkillPark.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				80040BD11BD7817C00963047 /* SkillPark.xcdatamodel */,
+			);
+			currentVersion = 80040BD11BD7817C00963047 /* SkillPark.xcdatamodel */;
+			path = SkillPark.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 80040BB91BD7817C00963047 /* Project object */;
+}
