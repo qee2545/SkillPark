@@ -708,11 +708,16 @@
                     </collectionView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="hs3-0S-5Yz">
-                        <barButtonItem key="rightBarButtonItem" title="收藏" id="qUF-t7-Iqw"/>
+                        <barButtonItem key="rightBarButtonItem" title="收藏" id="qUF-t7-Iqw">
+                            <connections>
+                                <action selector="followPressed:" destination="pVX-gF-duw" id="bic-3D-egt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="followBarButtonItem" destination="qUF-t7-Iqw" id="mbr-Iz-7rK"/>
                         <segue destination="AVw-Py-O31" kind="show" identifier="PersonToMessageDetail" id="60v-og-tkA"/>
                         <segue destination="mUS-Eo-8aS" kind="presentation" identifier="PersonToShowSkill" id="W2f-R8-VH9"/>
                     </connections>
@@ -1281,6 +1286,9 @@
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="pVX-gF-duw" kind="show" identifier="FollowToPerson" id="buP-rl-7aT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-pZ-kBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1487,7 +1495,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="R10-Jf-1qv"/>
-        <segue reference="6sD-ZQ-yft"/>
+        <segue reference="buP-rl-7aT"/>
         <segue reference="60v-og-tkA"/>
         <segue reference="W2f-R8-VH9"/>
     </inferredMetricsTieBreakers>

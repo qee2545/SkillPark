@@ -19,5 +19,6 @@
 @property (nonatomic) NSString *location;
 @property (nonatomic) CategoryRecord *category;
 @property (nonatomic) NSMutableArray<NSString *> *pictures;
+@property (nonatomic) NSNumber *likedUsersCount;
 
 @end

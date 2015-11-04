@@ -10,6 +10,15 @@
 
 @implementation ProfileRecord
 
+- (NSMutableArray *)category
+{
+    if (!_category) {
+        _category = [[NSMutableArray alloc] init];
+    }
+    
+    return _category;
+}
+
 - (NSMutableArray *)favorites
 {
     if (!_favorites) {

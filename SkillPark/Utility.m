@@ -7,9 +7,21 @@
 //
 
 #import "Utility.h"
+#import <AFNetworking/AFNetworking.h>
+
 @import AVFoundation;
 
 @implementation Utility
+
+#pragma mark -- API Utility
+
+
+- (BOOL)WebAPIWithURLString:(NSString *)usrStr usingMethod:(enum HttpMethod)httpMethod forObject:(id)obj
+{
+    NSLog(@"%s", __FUNCTION__);
+    
+    return false;
+}
 
 
 #pragma mark -- Size Utility

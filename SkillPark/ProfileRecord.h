@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CategoryRecord.h"
 
 @interface ProfileRecord : NSObject
 
@@ -15,7 +16,7 @@
 @property (nonatomic) NSString *profileDescription;
 @property (nonatomic) NSString *photo;
 @property (nonatomic) NSString *location;
-@property (nonatomic) NSString *category;
+@property (nonatomic) NSMutableArray<CategoryRecord*> *category;
 @property (nonatomic) NSNumber *favoritedUsersCount;
 @property (nonatomic) NSMutableArray<NSMutableArray*> *favorites;
 

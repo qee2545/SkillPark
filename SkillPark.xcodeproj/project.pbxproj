@@ -75,6 +75,8 @@
 		80002F451BE9AB7B001451F9 /* ProfileRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileRecord.m; sourceTree = "<group>"; };
 		80002F481BE9AF60001451F9 /* CommentRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentRecord.h; sourceTree = "<group>"; };
 		80002F491BE9AF60001451F9 /* CommentRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentRecord.m; sourceTree = "<group>"; };
+		80002F4B1BE9B5BA001451F9 /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
+		80002F4F1BE9F79D001451F9 /* APIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIDelegate.h; sourceTree = "<group>"; };
 		8001670F1BE8483B009DACB3 /* FollowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewController.h; sourceTree = "<group>"; };
 		800167101BE8483B009DACB3 /* FollowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewController.m; sourceTree = "<group>"; };
 		800167121BE84A13009DACB3 /* FollowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewCell.h; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				80002F421BE9A6CC001451F9 /* CategoryRecord.m */,
 				80002F3B1BE9A46A001451F9 /* CategoriesTable.h */,
 				80002F3C1BE9A46A001451F9 /* CategoriesTable.m */,
+				80002F4F1BE9F79D001451F9 /* APIDelegate.h */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 		800484B91BE082C500D26ABC /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				80002F4B1BE9B5BA001451F9 /* Enum.h */,
 				802A419D1BE33EC100367CBC /* Global.h */,
 				802A419E1BE33EC100367CBC /* Global.m */,
 				800484B61BE081CF00D26ABC /* Utility.h */,

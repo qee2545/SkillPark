@@ -14,11 +14,13 @@
 #import "ShowSkillViewController.h"
 #import "UserModel.h"
 #import "SkillModel.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface PersonCollectionViewController () <UICollectionViewDelegateFlowLayout>
 {
     BOOL isShowPersonSkill;
 }
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *followBarButtonItem;
 @end
 
 @implementation PersonCollectionViewController
@@ -43,6 +45,13 @@ static CGFloat const categoryColumnCount = 3.0;
     [super viewDidLoad];
     
 //    [self setLayout];
+    self.followBarButtonItem.title = @"收藏";
+    for (UserModel *followUser in loginUser.followUsers) {
+        if ([followUser.ID intValue] == [self.showUser.ID intValue]) {
+            self.followBarButtonItem.title = @"取消收藏";
+            break;
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -277,6 +286,32 @@ static CGFloat const categoryColumnCount = 3.0;
         controller.showSkill = self.showUser.skills[indexPath.row];
         controller.canNameButtonPressed = NO;
     }
+}
+- (IBAction)followPressed:(UIBarButtonItem *)sender {
+    if ([sender.title isEqualToString:@"收藏"]) {
+        sender.title = @"取消收藏";
+        [loginUser.followUsers addObject:self.showUser];
+    }
+    else {
+        sender.title = @"收藏";
+        for (int i = 0; i < loginUser.followUsers.count; i++) {
+            if ([loginUser.followUsers[i].ID intValue] == [self.showUser.ID intValue]) {
+                [loginUser.followUsers removeObjectAtIndex:i];
+                break;
+            }
+        }
+    }
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"auth_token":webTokenStr, @"favorite_id": self.showUser.ID};
+    NSLog(@"parameters: %@", parameters);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"http://www.skillpark.co/api/v1/profiles/%d/favorite", [loginUser.ID intValue]];
+    [manager POST:urlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 @end

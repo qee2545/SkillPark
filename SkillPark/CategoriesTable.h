@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "CategoryRecord.h"
+#import "APIDelegate.h"
 
 @interface CategoriesTable : NSObject
 
 @property (nonatomic) NSNumber *recordCount;
 @property (nonatomic) NSMutableArray<CategoryRecord*> *categoryRecords;
+@property (nonatomic) NSString *apiUrlStr;
+@property (nonatomic, weak) id<APIDelegate> delegate;
 
 @end

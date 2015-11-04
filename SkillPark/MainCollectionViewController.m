@@ -14,7 +14,7 @@
 #import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
 #import <AFNetworking/AFNetworking.h>
 
-@interface MainCollectionViewController () <CHTCollectionViewDelegateWaterfallLayout>
+@interface MainCollectionViewController () <CHTCollectionViewDelegateWaterfallLayout, APIDelegate>
 {   
     BOOL isAllUsersDownload;
     BOOL isAllSkillsDownload;
@@ -168,18 +168,18 @@ static CGFloat const columnCount = 2;
             }
             
             //download skill images
-//            if (skill.imagesURL.count > 0) {
-//                skill.images = [[NSMutableArray alloc] init];
-//            }
-//            for (int i = 0; i < skill.imagesURL.count; i++) {
-//                NSURL *url = [NSURL URLWithString:skill.imagesURL[i]];
-//                NSLog(@"get image %d", i);
-//                NSData *data = [[NSData alloc] initWithContentsOfURL:url];
-//                NSLog(@"get image %d done", i);
-//                UIImage *image = [[UIImage alloc] initWithData:data];
-//                [skill.images addObject:image];
-//            }
-//            skill.image = skill.images[skill.images.count - 1];
+            if (skill.imagesURL.count > 0) {
+                skill.images = [[NSMutableArray alloc] init];
+            }
+            for (int i = 0; i < skill.imagesURL.count; i++) {
+                NSURL *url = [NSURL URLWithString:skill.imagesURL[i]];
+                NSLog(@"get image %d", i);
+                NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+                NSLog(@"get image %d done", i);
+                UIImage *image = [[UIImage alloc] initWithData:data];
+                [skill.images addObject:image];
+            }
+            skill.image = skill.images[skill.images.count - 1];
             
 //            [skill printInfo];
             [allSkills addObject:skill];
@@ -375,6 +375,14 @@ static CGFloat const columnCount = 2;
         
         [self.collectionView reloadData];
     }
+}
+
+- (void)APITextDownloadFinished {
+    
+}
+
+- (void)APIImageDownloadFinished {
+    
 }
 
 - (void)viewDidLoad {

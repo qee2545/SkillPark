@@ -12,13 +12,24 @@
 #import "CommentModel.h"
 #import "CategoryModel.h"
 
+#import "SkillsTable.h"
+#import "ProfilesTable.h"
+#import "CommentsTable.h"
+#import "CategoriesTable.h"
+
 extern NSString *webTokenStr;
 extern NSString *loginUserName;
 extern UserModel* loginUser;
-extern NSMutableArray<UserModel *> *allUsers;
-extern NSMutableArray<SkillModel *> *allSkills;
-extern NSMutableArray<CommentModel *> *allComments;
-extern NSMutableArray<CategoryModel *> *allCategories;
+extern NSMutableArray<UserModel*> *allUsers;
+extern NSMutableArray<SkillModel*> *allSkills;
+extern NSMutableArray<CommentModel*> *allComments;
+extern NSMutableArray<CategoryModel*> *allCategories;
+
+extern SkillsTable *skillsTable;
+extern ProfilesTable *profilesTable;
+extern CommentsTable *commnetsTable;
+extern CategoriesTable *categoriesTable;
+
 
 @interface Global : NSObject
 {

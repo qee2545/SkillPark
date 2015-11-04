@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "SkillRecord.h"
+#import "APIDelegate.h"
 
 @interface SkillsTable : NSObject
 
 @property (nonatomic) NSNumber *recordCount;
 @property (nonatomic) NSMutableArray<SkillRecord*> *skillRecords;
+@property (nonatomic) NSString *apiUrlStr;
+@property (nonatomic, weak) id<APIDelegate> delegate;
 
 @end
