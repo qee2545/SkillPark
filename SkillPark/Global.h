@@ -12,6 +12,9 @@
 #import "CommentModel.h"
 #import "CategoryModel.h"
 
+extern NSString *webTokenStr;
+extern NSString *loginUserName;
+extern UserModel* loginUser;
 extern NSMutableArray<UserModel *> *allUsers;
 extern NSMutableArray<SkillModel *> *allSkills;
 extern NSMutableArray<CommentModel *> *allComments;

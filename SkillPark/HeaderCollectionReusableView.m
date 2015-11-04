@@ -30,7 +30,6 @@
     }
     
     //self intro
-    self.selfIntroLabel.numberOfLines = 0;
     self.selfIntroLabel.text = user.descript;
 }
 
@@ -49,13 +48,22 @@
     CGFloat nameHeight = self.nameLabel.frame.size.height;
     CGFloat locationHeight = self.locationLabel.frame.size.height;
     UIFont *font = self.selfIntroLabel.font;
-    CGSize selfIntroSize = [Utility labelSizeForString:self.selfIntroLabel.text withFontName:font.fontName withFontSize:font.pointSize withLimitWidth:self.selfIntroLabel.frame.size.width];
-    CGFloat buttonHeight = self.goodButton.frame.size.height;
-    CGFloat heightComponent =  imageHeight + nameHeight + locationHeight + selfIntroSize.height + buttonHeight + 8;
+    CGSize selfIntroSize = CGSizeZero;
+    if (self.selfIntroLabel.text.length > 0) {
+        selfIntroSize = [Utility labelSizeForString:self.selfIntroLabel.text withFontName:font.fontName withFontSize:font.pointSize withLimitWidth:self.selfIntroLabel.frame.size.width];
+    }
+    //CGFloat buttonHeight = self.goodButton.frame.size.height;
+    CGFloat buttonHeight = self.goodImageView.frame.size.height;
     
+    CGFloat heightComponent =  imageHeight + nameHeight + locationHeight + selfIntroSize.height + buttonHeight + 16;
+    
+    //total height
     CGFloat height = heightConstraints + heightComponent;
     
-    return CGSizeMake(width, height);
+    //[self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    
+    return CGSizeMake([UIScreen mainScreen].bounds.size
+                      .width, height);
 }
 
 @end

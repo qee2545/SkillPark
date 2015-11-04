@@ -8,6 +8,9 @@
 
 #import "Global.h"
 
+NSString *webTokenStr;
+NSString *loginUserName;
+UserModel *loginUser;
 NSMutableArray<UserModel *> *allUsers;
 NSMutableArray<SkillModel *> *allSkills;
 NSMutableArray<CommentModel *> *allComments;

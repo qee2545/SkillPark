@@ -16,17 +16,19 @@
 
 @interface UserModel : NSObject
 
+@property (nonatomic) NSNumber *ID;
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *descript;
 @property (nonatomic) UIImage *headPhoto;
 @property (nonatomic) NSString *headPhotoURL;
 @property (nonatomic) NSString *location;
-@property (nonatomic) NSMutableArray<CategoryModel *> *likedCategory;
+@property (nonatomic) NSMutableArray<CategoryModel*> *likedCategory;
 @property (nonatomic, assign) unsigned int followingNum;
-@property (nonatomic) NSMutableArray<SkillModel *> *skills;
-@property (nonatomic) NSMutableArray<CommentModel *> *comments;
-@property (nonatomic) NSMutableArray<CommentGroupModel *> *commentsGroup;
-
+@property (nonatomic) NSMutableArray<SkillModel*> *skills;
+@property (nonatomic) NSMutableArray<CommentModel*> *comments;
+@property (nonatomic) NSMutableArray<CommentGroupModel*> *commentsGroup;
+@property (nonatomic) NSMutableArray<NSMutableArray*> *favorites;
+@property (nonatomic) NSMutableArray<__weak UserModel*> *followUsers;
 
 - (void)printInfo;
 - (void)printCommentGroup;

@@ -134,10 +134,16 @@
 //    [self.followButton setImage:buttonImage forState:UIControlStateNormal];
 //    [self.followButton setImage:buttonImage forState:UIControlStateHighlighted];
 }
+- (IBAction)cancelButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)nameButtonPressed:(UIButton *)sender
 {
-    [self performSegueWithIdentifier:@"ShowSkillToPerson" sender:nil];
+    if (self.canNameButtonPressed) {
+        [self performSegueWithIdentifier:@"ShowSkillToPerson" sender:nil];
+    }
+    
 }
 
 
@@ -147,7 +153,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     PersonCollectionViewController *controller = [segue destinationViewController];
-    controller.theUser = self.showSkill.owner;
+    controller.showUser = self.showSkill.owner;
 }
 
 

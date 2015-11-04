@@ -41,7 +41,7 @@ static CGFloat const columnCount = 2;
 
 - (UIImage *)setImage:(UIImage *)image fromURLString:(NSString *)urlStr
 {
-    __block UIImage *skillImage;
+    __block UIImage *skillImage = image;
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
@@ -63,25 +63,33 @@ static CGFloat const columnCount = 2;
 
 - (void)getAPIProfiles
 {
+    NSLog(@"%s", __FUNCTION__);
+    
     [manger GET:@"http://www.skillpark.co/api/v1/profiles" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
- 
         NSDictionary *apiDictionary = responseObject;
         NSNumber *recordCount = apiDictionary[@"metadata"][@"total"];
         for (int i = 0 ; i < [recordCount intValue]; i++) {
             UserModel *user = [[UserModel alloc] init];
+            NSNumber *ID = apiDictionary[@"data"][i][@"id"];
             NSString *name = apiDictionary[@"data"][i][@"username"];
             NSString *descript = apiDictionary[@"data"][i][@"description"];
             NSString *photoURL = apiDictionary[@"data"][i][@"photo"];
             NSString *location = apiDictionary[@"data"][i][@"location"];
             NSArray *categoryArray = apiDictionary[@"data"][i][@"category"];
             NSNumber *favorited_users_count = apiDictionary[@"data"][i][@"favorited_users_count"];
-
+            
+            NSMutableArray *favorites = apiDictionary[@"data"][i][@"favorites"];
+            
+            user.ID = ID;
             user.name = name;
             user.descript = descript;
             user.headPhotoURL = photoURL;
             
             user.location = location;
             user.followingNum = [favorited_users_count intValue];
+            
+            user.favorites = favorites;
+            NSLog(@"user.favorites:%@", user.favorites);
         
             if (categoryArray.count > 0) {
                 user.likedCategory = [[NSMutableArray alloc] init];
@@ -97,12 +105,13 @@ static CGFloat const columnCount = 2;
             
             //download headphoto
             NSURL *url = [NSURL URLWithString:user.headPhotoURL];
-//            NSLog(@"get headphoto");
+            NSLog(@"url:%@", url);
+            NSLog(@"get headphoto %d", i);
             NSData *data = [[NSData alloc] initWithContentsOfURL:url];
-//            NSLog(@"get headphoto done");
+            NSLog(@"get headphoto %d done", i);
             user.headPhoto = [[UIImage alloc] initWithData:data];
             
-//            [user printInfo];
+            [user printInfo];
             [allUsers addObject:user];
         }
         
@@ -159,18 +168,18 @@ static CGFloat const columnCount = 2;
             }
             
             //download skill images
-            if (skill.imagesURL.count > 0) {
-                skill.images = [[NSMutableArray alloc] init];
-            }
-            for (int i = 0; i < skill.imagesURL.count; i++) {
-                NSURL *url = [NSURL URLWithString:skill.imagesURL[i]];
+//            if (skill.imagesURL.count > 0) {
+//                skill.images = [[NSMutableArray alloc] init];
+//            }
+//            for (int i = 0; i < skill.imagesURL.count; i++) {
+//                NSURL *url = [NSURL URLWithString:skill.imagesURL[i]];
 //                NSLog(@"get image %d", i);
-                NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+//                NSData *data = [[NSData alloc] initWithContentsOfURL:url];
 //                NSLog(@"get image %d done", i);
-                UIImage *image = [[UIImage alloc] initWithData:data];
-                [skill.images addObject:image];
-            }
-            skill.image = skill.images[skill.images.count - 1];
+//                UIImage *image = [[UIImage alloc] initWithData:data];
+//                [skill.images addObject:image];
+//            }
+//            skill.image = skill.images[skill.images.count - 1];
             
 //            [skill printInfo];
             [allSkills addObject:skill];
@@ -214,9 +223,67 @@ static CGFloat const columnCount = 2;
     }];
 }
 
+- (void)getAPICategory
+{
+    [manger GET:@"http://www.skillpark.co/api/v1/categories" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSDictionary *apiDictionary = responseObject;
+        NSNumber *recordCount = apiDictionary[@"metadata"][@"total"];
+        for (int i = 0 ; i < [recordCount intValue]; i++) {
+            CategoryModel *category = [[CategoryModel alloc] init];
+            NSNumber *ID = apiDictionary[@"data"][i][@"id"];
+            NSString *name = apiDictionary[@"data"][i][@"name"];
+            NSString *category_icon = apiDictionary[@"data"][i][@"category_icon"];
+            
+            category.ID = ID;
+            category.name = name;
+            category.imageURL = category_icon;
+
+            NSURL *url = [NSURL URLWithString:category.imageURL];
+//            NSLog(@"get category image %d", [category.ID intValue]);
+            NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+//            NSLog(@"get category image %d done", [category.ID intValue]);
+            UIImage *image = [[UIImage alloc] initWithData:data];
+            category.image = image;
+            
+            [allCategories addObject:category];
+        }
+        
+        isAllCategoriesDownload = YES;
+        [self finishAPIDownload];
+        
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        NSLog(@"Error %@", error);
+    }];
+}
+
 - (void)finishAPIDownload
 {
-    if (isAllUsersDownload && isAllSkillsDownload && isAllCommentsDownload) {
+    if (isAllUsersDownload && isAllSkillsDownload && isAllCommentsDownload && isAllCategoriesDownload) {
+        
+        for (UserModel *user in allUsers) {
+            if ([user.name isEqualToString:loginUserName]) {
+                loginUser = user;
+                break;
+            }
+        }
+        //loginUser = allUsers[1];
+        
+        for (UserModel *user in allUsers) {
+//            NSLog(@"==== user:%@  =====",user.name);
+            for (NSArray *favorite in user.favorites) {
+                for (UserModel *followUser in allUsers) {
+                    if ([favorite[0] intValue] == [followUser.ID intValue]) {
+                        if (user.followUsers == nil) {
+                            user.followUsers = [[NSMutableArray alloc] init];
+                        }
+                        [user.followUsers addObject:followUser];
+//                        NSLog(@"follow user:%@", user.followUsers[user.followUsers.count - 1].name);
+                    }
+                }
+            }
+        }
+     
         for (UserModel *user in allUsers) {
             user.skills = [[NSMutableArray alloc] init];
             user.comments = [[NSMutableArray alloc] init];
@@ -294,8 +361,16 @@ static CGFloat const columnCount = 2;
                     [user.commentsGroup addObject:commentGNew];
                 }
             }
-            
 //            [user printCommentGroup];
+            
+            for (CategoryModel* category in user.likedCategory) {
+                for (CategoryModel* categoryGold in allCategories) {
+                    if ([category.ID isEqualToNumber:categoryGold.ID]) {
+                        category.image = categoryGold.image;
+                    }
+                }
+            }
+            
         }
         
         [self.collectionView reloadData];
@@ -312,6 +387,7 @@ static CGFloat const columnCount = 2;
     isAllUsersDownload = NO;
     isAllSkillsDownload = NO;
     isAllCommentsDownload = NO;
+    isAllCategoriesDownload = NO;
     
     allUsers = [[NSMutableArray alloc] init];
     [self getAPIProfiles];
@@ -321,6 +397,9 @@ static CGFloat const columnCount = 2;
     
     allComments = [[NSMutableArray alloc] init];
     [self getAPIComments];
+    
+    allCategories = [[NSMutableArray alloc] init];
+    [self getAPICategory];
     
 //    [self fakeData];
     [self setupCollectionView];
@@ -334,18 +413,6 @@ static CGFloat const columnCount = 2;
     self.navigationController.navigationBarHidden = YES;
     [self.collectionView reloadData];
 }
-//
-//- (void)viewDidAppear:(BOOL)animated {
-//    NSLog(@"%s", __FUNCTION__);
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated {
-//    NSLog(@"%s", __FUNCTION__);
-//}
-//
-//- (void)viewDidDisappear:(BOOL)animated {
-//    NSLog(@"%s", __FUNCTION__);
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -444,11 +511,12 @@ static CGFloat const columnCount = 2;
         NSIndexPath *indexPath = sender;
         ShowSkillViewController *controller = [segue destinationViewController];
         controller.showSkill = allSkills[indexPath.row];
+        controller.canNameButtonPressed = YES;
     }
     else if ([segue.identifier isEqualToString:@"MainToPerson"]) {
         UserModel *showUser = sender;
         PersonCollectionViewController *controller = [segue destinationViewController];
-        controller.theUser = showUser;
+        controller.showUser = showUser;
     }
     
 }
@@ -488,12 +556,13 @@ static CGFloat const columnCount = 2;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"====== row:%d =======", indexPath.row);
+    NSLog(@"%s", __FUNCTION__);
+    NSLog(@"====== row:%d =======", indexPath.row);
     
     //cell width
-    CGFloat contentWidth = collectionView.bounds.size.width - insetLeft - insetRight;
-    CGFloat columnWidth = contentWidth / columnCount;
-    CGFloat cellWidth = columnWidth - (minimumColumnSpacing / 2);
+    CGFloat contentWidth = collectionView.bounds.size.width - insetLeft - insetRight - minimumColumnSpacing;
+    CGFloat cellWidth = contentWidth / columnCount;
+
     //NSLog(@"contentWidth:%f columnWidth:%f cellWidth:%f", contentWidth, columnWidth, cellWidth);
 
     SkillModel *skill = (SkillModel *)allSkills[indexPath.row];

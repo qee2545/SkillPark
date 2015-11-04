@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UserModel.h"
 #import "CommentGroupModel.h"
+#import "Global.h"
 
 @interface MessageViewController : UIViewController
 @property (nonatomic) UserModel *theUser;

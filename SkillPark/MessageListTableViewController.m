@@ -27,7 +27,7 @@ static NSString * const reuseIdentifier = @"MessageListCell";
     self.tableView.estimatedRowHeight = 70.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    theUser = allUsers[1];
+    theUser = loginUser;
 }
 
 - (void)viewWillAppear:(BOOL)animated

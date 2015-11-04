@@ -9,6 +9,7 @@
 #import "MessageViewController.h"
 #import "SomeoneMessageTableViewCell.h"
 #import "SelfMessageTableViewCell.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface MessageViewController () <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -38,8 +39,8 @@ static NSString * const selfReuseIdentifier = @"SelfCell";
     
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"msgBackground"] drawInRect:self.view.bounds];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
     
 //    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
@@ -59,7 +60,7 @@ static NSString * const selfReuseIdentifier = @"SelfCell";
 {
     [super viewWillAppear:animated];
     
-    self.navigationItem.title = self.commentGroup.talkedUser.name;
+    self.navigationItem.title = self.talkedUser.name;
     self.tabBarController.tabBar.hidden = YES;
     
     [self.messageTableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
@@ -176,12 +177,15 @@ static NSString * const selfReuseIdentifier = @"SelfCell";
 
 - (IBAction)sendMessage:(UIButton *)sender {
     NSLog(@"%s", __FUNCTION__);
-    if (self.messageTextField.text.length != 0) {
+    if (self.messageTextField.text.length > 0) {
         NSLog(@"msg: %@", self.messageTextField.text);
         
         if (self.commentGroup == nil) {
             self.commentGroup = [[CommentGroupModel alloc] init];
-            [self.theUser.commentsGroup addObject:self.commentGroup];
+            if (self.theUser.commentsGroup == nil) {
+                self.theUser.commentsGroup = [[NSMutableArray alloc] init];
+            }
+            [self.theUser.commentsGroup insertObject:self.commentGroup atIndex:0];
         }
         if (self.commentGroup.comments == nil) {
             self.commentGroup.comments = [[NSMutableArray alloc] init];
@@ -197,8 +201,23 @@ static NSString * const selfReuseIdentifier = @"SelfCell";
         [self.messageTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         
         [self scrollToTheBottom:YES];
+  
+        [self sendMessageToServerWithCommentor:self.theUser.name andCommentedUser:self.talkedUser.name andContent:self.messageTextField.text];
+        
         self.messageTextField.text = @"";
     }
+}
+
+- (void)sendMessageToServerWithCommentor:(NSString *)commentor andCommentedUser:(NSString *)CommentedUser andContent:(NSString *)content {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"auth_token":webTokenStr, @"metadata": @1, @"data":@[@{@"content":content, @"commentor":commentor, @"commented_user":CommentedUser}]};
+    NSLog(@"parameters: %@", parameters);
+    
+    [manager POST:@"http://www.skillpark.co/api/v1/comments" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 - (void)scrollToTheBottom:(BOOL)animated

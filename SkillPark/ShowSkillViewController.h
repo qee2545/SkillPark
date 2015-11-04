@@ -11,4 +11,5 @@
 
 @interface ShowSkillViewController : UIViewController
 @property (nonatomic) SkillModel* showSkill;
+@property (nonatomic) BOOL canNameButtonPressed;
 @end

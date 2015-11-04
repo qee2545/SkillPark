@@ -28,11 +28,12 @@
     self.headPhotoImageView.clipsToBounds = YES;
 
     self.nameLabel.text = user.name;
-    self.nameLabel.textColor = [UIColor whiteColor];
+    //self.nameLabel.textColor = [UIColor whiteColor];
     
     self.messageWrapView.layer.cornerRadius = 10.0f;
     self.messageWrapView.backgroundColor = [UIColor colorWithRed:0.89 green:0.91 blue:0.92 alpha:1];//[UIColor whiteColor];
     self.messageWrapView.clipsToBounds = YES;
+    [self.messageWrapView sizeToFit];
     
     self.messageLabel.text = message;
     [self.messageLabel sizeToFit];

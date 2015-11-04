@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "UserModel.h"
 
+@protocol HeaderCollectionReusableViewDelegate <NSObject>
+
+- (void) personSkillTaped;
+- (void) perferSkillTaped;
+@end
+
 @interface HeaderCollectionReusableView : UICollectionReusableView
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *heightConstraints;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
@@ -16,7 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selfIntroLabel;
-@property (weak, nonatomic) IBOutlet UIButton *goodButton;
+@property (weak, nonatomic) IBOutlet UIImageView *goodImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *learnImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *messageImageView;
 
 
 - (void)setHeaderViewWithUser:(UserModel *)user;

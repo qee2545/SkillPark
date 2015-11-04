@@ -10,9 +10,10 @@
 
 @implementation PreferCollectionViewCell
 
-- (void)setPreferCellWith:(NSString *)category
+- (void)setPreferCellWithCategory:(CategoryModel *)category
 {
-    self.categoryLabel.text = category;
+    self.categoryLabel.text = category.name;
+    self.categoryImageView.image = category.image;
 }
 
 @end

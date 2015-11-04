@@ -7,7 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80002F341BE9A3C4001451F9 /* ProfilesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F331BE9A3C4001451F9 /* ProfilesTable.m */; settings = {ASSET_TAGS = (); }; };
+		80002F371BE9A3F9001451F9 /* SkillsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F361BE9A3F9001451F9 /* SkillsTable.m */; settings = {ASSET_TAGS = (); }; };
+		80002F3A1BE9A40F001451F9 /* CommentsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F391BE9A40F001451F9 /* CommentsTable.m */; settings = {ASSET_TAGS = (); }; };
+		80002F3D1BE9A46A001451F9 /* CategoriesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F3C1BE9A46A001451F9 /* CategoriesTable.m */; settings = {ASSET_TAGS = (); }; };
+		80002F401BE9A4EF001451F9 /* SkillRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F3F1BE9A4EF001451F9 /* SkillRecord.m */; settings = {ASSET_TAGS = (); }; };
+		80002F431BE9A6CC001451F9 /* CategoryRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F421BE9A6CC001451F9 /* CategoryRecord.m */; settings = {ASSET_TAGS = (); }; };
+		80002F461BE9AB7B001451F9 /* ProfileRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F451BE9AB7B001451F9 /* ProfileRecord.m */; settings = {ASSET_TAGS = (); }; };
+		80002F4A1BE9AF60001451F9 /* CommentRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F491BE9AF60001451F9 /* CommentRecord.m */; settings = {ASSET_TAGS = (); }; };
+		800167111BE8483B009DACB3 /* FollowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800167101BE8483B009DACB3 /* FollowTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		800167141BE84A13009DACB3 /* FollowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 800167131BE84A13009DACB3 /* FollowTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		8001673A1BE85DEA009DACB3 /* ProfileEditListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800167391BE85DEA009DACB3 /* ProfileEditListTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		8001B29D1BE1310400B8786F /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8001B29C1BE1310400B8786F /* CategoryModel.m */; settings = {ASSET_TAGS = (); }; };
+		80027AB71BE71B3E004DFACD /* SelfPersonCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80027AB61BE71B3E004DFACD /* SelfPersonCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		80027ABA1BE722A7004DFACD /* SelfPersonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80027AB91BE722A7004DFACD /* SelfPersonCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		80027ABD1BE722C3004DFACD /* SelfPreferCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80027ABC1BE722C3004DFACD /* SelfPreferCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		80027AC01BE72508004DFACD /* SelfHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80027ABF1BE72508004DFACD /* SelfHeaderCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
 		80040BC61BD7817C00963047 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80040BC51BD7817C00963047 /* main.m */; };
 		80040BC91BD7817C00963047 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80040BC81BD7817C00963047 /* AppDelegate.m */; };
 		80040BCF1BD7817C00963047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80040BCD1BD7817C00963047 /* Main.storyboard */; };
@@ -26,6 +41,7 @@
 		802A41A21BE3478400367CBC /* CommentGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 802A41A11BE3478400367CBC /* CommentGroupModel.m */; settings = {ASSET_TAGS = (); }; };
 		802B4DBB1BDBF808004F127A /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802B4DBA1BDBF808004F127A /* TestViewController.m */; settings = {ASSET_TAGS = (); }; };
 		8040C24E1BDA067300B5FF23 /* SearchSkillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8040C24D1BDA067300B5FF23 /* SearchSkillTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		80A9A7E81BE684460049154B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A9A7E71BE684460049154B /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		80B7B72D1BE21F6C00DF54CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B7B72C1BE21F6C00DF54CD /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		80B7B7361BE2927400DF54CD /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B7B7351BE2927400DF54CD /* CommentModel.m */; settings = {ASSET_TAGS = (); }; };
 		80F9D9F61BDE83CC0082EECD /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9D9F41BDE83CC0082EECD /* MainCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -43,8 +59,38 @@
 /* Begin PBXFileReference section */
 		6ECB31CC45DD4017C4B13C18 /* libPods-SkillPark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SkillPark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7286057672740C16F345F20A /* Pods-SkillPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkillPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-SkillPark/Pods-SkillPark.release.xcconfig"; sourceTree = "<group>"; };
+		80002F321BE9A3C4001451F9 /* ProfilesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilesTable.h; sourceTree = "<group>"; };
+		80002F331BE9A3C4001451F9 /* ProfilesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilesTable.m; sourceTree = "<group>"; };
+		80002F351BE9A3F9001451F9 /* SkillsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillsTable.h; sourceTree = "<group>"; };
+		80002F361BE9A3F9001451F9 /* SkillsTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillsTable.m; sourceTree = "<group>"; };
+		80002F381BE9A40F001451F9 /* CommentsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTable.h; sourceTree = "<group>"; };
+		80002F391BE9A40F001451F9 /* CommentsTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTable.m; sourceTree = "<group>"; };
+		80002F3B1BE9A46A001451F9 /* CategoriesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesTable.h; sourceTree = "<group>"; };
+		80002F3C1BE9A46A001451F9 /* CategoriesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesTable.m; sourceTree = "<group>"; };
+		80002F3E1BE9A4EF001451F9 /* SkillRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillRecord.h; sourceTree = "<group>"; };
+		80002F3F1BE9A4EF001451F9 /* SkillRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillRecord.m; sourceTree = "<group>"; };
+		80002F411BE9A6CC001451F9 /* CategoryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryRecord.h; sourceTree = "<group>"; };
+		80002F421BE9A6CC001451F9 /* CategoryRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryRecord.m; sourceTree = "<group>"; };
+		80002F441BE9AB7B001451F9 /* ProfileRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileRecord.h; sourceTree = "<group>"; };
+		80002F451BE9AB7B001451F9 /* ProfileRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileRecord.m; sourceTree = "<group>"; };
+		80002F481BE9AF60001451F9 /* CommentRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentRecord.h; sourceTree = "<group>"; };
+		80002F491BE9AF60001451F9 /* CommentRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentRecord.m; sourceTree = "<group>"; };
+		8001670F1BE8483B009DACB3 /* FollowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewController.h; sourceTree = "<group>"; };
+		800167101BE8483B009DACB3 /* FollowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewController.m; sourceTree = "<group>"; };
+		800167121BE84A13009DACB3 /* FollowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewCell.h; sourceTree = "<group>"; };
+		800167131BE84A13009DACB3 /* FollowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewCell.m; sourceTree = "<group>"; };
+		800167381BE85DEA009DACB3 /* ProfileEditListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditListTableViewController.h; sourceTree = "<group>"; };
+		800167391BE85DEA009DACB3 /* ProfileEditListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditListTableViewController.m; sourceTree = "<group>"; };
 		8001B29B1BE1310400B8786F /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
 		8001B29C1BE1310400B8786F /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
+		80027AB51BE71B3E004DFACD /* SelfPersonCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfPersonCollectionViewController.h; sourceTree = "<group>"; };
+		80027AB61BE71B3E004DFACD /* SelfPersonCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfPersonCollectionViewController.m; sourceTree = "<group>"; };
+		80027AB81BE722A7004DFACD /* SelfPersonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfPersonCollectionViewCell.h; sourceTree = "<group>"; };
+		80027AB91BE722A7004DFACD /* SelfPersonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfPersonCollectionViewCell.m; sourceTree = "<group>"; };
+		80027ABB1BE722C3004DFACD /* SelfPreferCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfPreferCollectionViewCell.h; sourceTree = "<group>"; };
+		80027ABC1BE722C3004DFACD /* SelfPreferCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfPreferCollectionViewCell.m; sourceTree = "<group>"; };
+		80027ABE1BE72508004DFACD /* SelfHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		80027ABF1BE72508004DFACD /* SelfHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfHeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		80040BC11BD7817C00963047 /* SkillPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkillPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80040BC51BD7817C00963047 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		80040BC71BD7817C00963047 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -79,6 +125,8 @@
 		802B4DBA1BDBF808004F127A /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		8040C24C1BDA067300B5FF23 /* SearchSkillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSkillTableViewController.h; sourceTree = "<group>"; };
 		8040C24D1BDA067300B5FF23 /* SearchSkillTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSkillTableViewController.m; sourceTree = "<group>"; };
+		80A9A7E61BE684460049154B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		80A9A7E71BE684460049154B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		80B7B72C1BE21F6C00DF54CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80B7B7341BE2927400DF54CD /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
 		80B7B7351BE2927400DF54CD /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
@@ -113,6 +161,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80002F471BE9AE72001451F9 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				80002F3E1BE9A4EF001451F9 /* SkillRecord.h */,
+				80002F3F1BE9A4EF001451F9 /* SkillRecord.m */,
+				80002F351BE9A3F9001451F9 /* SkillsTable.h */,
+				80002F361BE9A3F9001451F9 /* SkillsTable.m */,
+				80002F441BE9AB7B001451F9 /* ProfileRecord.h */,
+				80002F451BE9AB7B001451F9 /* ProfileRecord.m */,
+				80002F321BE9A3C4001451F9 /* ProfilesTable.h */,
+				80002F331BE9A3C4001451F9 /* ProfilesTable.m */,
+				80002F481BE9AF60001451F9 /* CommentRecord.h */,
+				80002F491BE9AF60001451F9 /* CommentRecord.m */,
+				80002F381BE9A40F001451F9 /* CommentsTable.h */,
+				80002F391BE9A40F001451F9 /* CommentsTable.m */,
+				80002F411BE9A6CC001451F9 /* CategoryRecord.h */,
+				80002F421BE9A6CC001451F9 /* CategoryRecord.m */,
+				80002F3B1BE9A46A001451F9 /* CategoriesTable.h */,
+				80002F3C1BE9A46A001451F9 /* CategoriesTable.m */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
 		80040BB81BD7817C00963047 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +208,7 @@
 				802B4DB81BDBF6EF004F127A /* Controllers */,
 				80040BEB1BD78BF300963047 /* Cell */,
 				800484B91BE082C500D26ABC /* Class */,
+				80002F471BE9AE72001451F9 /* Table */,
 				802B4DB71BDBF6D5004F127A /* Storyboard */,
 				80040BE41BD78A6200963047 /* Model */,
 				80040BC71BD7817C00963047 /* AppDelegate.h */,
@@ -186,6 +258,12 @@
 				80FC75001BDF5DE4007E9831 /* PreferCollectionViewCell.m */,
 				80FF57831BD8ADEF00F14085 /* HeaderCollectionReusableView.h */,
 				80FF57841BD8ADEF00F14085 /* HeaderCollectionReusableView.m */,
+				80027AB81BE722A7004DFACD /* SelfPersonCollectionViewCell.h */,
+				80027AB91BE722A7004DFACD /* SelfPersonCollectionViewCell.m */,
+				80027ABB1BE722C3004DFACD /* SelfPreferCollectionViewCell.h */,
+				80027ABC1BE722C3004DFACD /* SelfPreferCollectionViewCell.m */,
+				80027ABE1BE72508004DFACD /* SelfHeaderCollectionReusableView.h */,
+				80027ABF1BE72508004DFACD /* SelfHeaderCollectionReusableView.m */,
 				80FC75051BDF7C63007E9831 /* SearchTableViewCell.h */,
 				80FC75061BDF7C63007E9831 /* SearchTableViewCell.m */,
 				80FC75071BDF7C63007E9831 /* SearchTableViewCell.xib */,
@@ -195,6 +273,8 @@
 				80FC75111BDF9670007E9831 /* SomeoneMessageTableViewCell.m */,
 				800484BD1BE0B5A900D26ABC /* MessageListTableViewCell.h */,
 				800484BE1BE0B5A900D26ABC /* MessageListTableViewCell.m */,
+				800167121BE84A13009DACB3 /* FollowTableViewCell.h */,
+				800167131BE84A13009DACB3 /* FollowTableViewCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -236,6 +316,14 @@
 				800484BB1BE0AC0C00D26ABC /* MessageListTableViewController.m */,
 				802B4DB91BDBF808004F127A /* TestViewController.h */,
 				802B4DBA1BDBF808004F127A /* TestViewController.m */,
+				80A9A7E61BE684460049154B /* LoginViewController.h */,
+				80A9A7E71BE684460049154B /* LoginViewController.m */,
+				80027AB51BE71B3E004DFACD /* SelfPersonCollectionViewController.h */,
+				80027AB61BE71B3E004DFACD /* SelfPersonCollectionViewController.m */,
+				8001670F1BE8483B009DACB3 /* FollowTableViewController.h */,
+				800167101BE8483B009DACB3 /* FollowTableViewController.m */,
+				800167381BE85DEA009DACB3 /* ProfileEditListTableViewController.h */,
+				800167391BE85DEA009DACB3 /* ProfileEditListTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -382,17 +470,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				80FC75011BDF5DE4007E9831 /* PreferCollectionViewCell.m in Sources */,
+				80027ABA1BE722A7004DFACD /* SelfPersonCollectionViewCell.m in Sources */,
+				80002F461BE9AB7B001451F9 /* ProfileRecord.m in Sources */,
 				8001B29D1BE1310400B8786F /* CategoryModel.m in Sources */,
+				80A9A7E81BE684460049154B /* LoginViewController.m in Sources */,
+				80002F3A1BE9A40F001451F9 /* CommentsTable.m in Sources */,
+				80027AC01BE72508004DFACD /* SelfHeaderCollectionReusableView.m in Sources */,
+				80027AB71BE71B3E004DFACD /* SelfPersonCollectionViewController.m in Sources */,
+				800167141BE84A13009DACB3 /* FollowTableViewCell.m in Sources */,
+				80002F401BE9A4EF001451F9 /* SkillRecord.m in Sources */,
 				802A41A21BE3478400367CBC /* CommentGroupModel.m in Sources */,
+				80002F371BE9A3F9001451F9 /* SkillsTable.m in Sources */,
+				80002F431BE9A6CC001451F9 /* CategoryRecord.m in Sources */,
 				802B4DBB1BDBF808004F127A /* TestViewController.m in Sources */,
 				80FC75081BDF7C63007E9831 /* SearchTableViewCell.m in Sources */,
 				800484B81BE081CF00D26ABC /* Utility.m in Sources */,
 				80F9D9F61BDE83CC0082EECD /* MainCollectionViewCell.m in Sources */,
 				80040BC91BD7817C00963047 /* AppDelegate.m in Sources */,
+				80027ABD1BE722C3004DFACD /* SelfPreferCollectionViewCell.m in Sources */,
 				80FC75121BDF9670007E9831 /* SomeoneMessageTableViewCell.m in Sources */,
 				800484BC1BE0AC0C00D26ABC /* MessageListTableViewController.m in Sources */,
 				8040C24E1BDA067300B5FF23 /* SearchSkillTableViewController.m in Sources */,
 				80040BEA1BD78ABF00963047 /* UserModel.m in Sources */,
+				80002F3D1BE9A46A001451F9 /* CategoriesTable.m in Sources */,
 				8021F9FE1BD7BD3E00C0E3BF /* PersonCollectionViewController.m in Sources */,
 				80FC750C1BDF9623007E9831 /* SelfMessageTableViewCell.m in Sources */,
 				80FC750F1BDF9645007E9831 /* MessageViewController.m in Sources */,
@@ -400,9 +500,13 @@
 				802A419F1BE33EC100367CBC /* Global.m in Sources */,
 				80040BC61BD7817C00963047 /* main.m in Sources */,
 				80040BE91BD78ABF00963047 /* SkillModel.m in Sources */,
+				8001673A1BE85DEA009DACB3 /* ProfileEditListTableViewController.m in Sources */,
 				80040BD21BD7817C00963047 /* SkillPark.xcdatamodeld in Sources */,
+				80002F4A1BE9AF60001451F9 /* CommentRecord.m in Sources */,
 				8021FA011BD7BE6800C0E3BF /* PersonCollectionViewCell.m in Sources */,
+				80002F341BE9A3C4001451F9 /* ProfilesTable.m in Sources */,
 				80B7B7361BE2927400DF54CD /* CommentModel.m in Sources */,
+				800167111BE8483B009DACB3 /* FollowTableViewController.m in Sources */,
 				800484BF1BE0B5A900D26ABC /* MessageListTableViewCell.m in Sources */,
 				8021F9FB1BD79D3300C0E3BF /* ShowSkillViewController.m in Sources */,
 				800974DD1BDDF83B0042ED8D /* MainCollectionViewController.m in Sources */,

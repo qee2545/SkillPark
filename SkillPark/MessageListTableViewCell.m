@@ -22,16 +22,6 @@
 
 - (void)setContentWithCommentGroup:(CommentGroupModel *)commentGroup;
 {
-//    UIImage *image = [UIImage imageNamed:@"headPhoto"];
-//    self.headPhotoImageView.image = image;
-//    self.headPhotoImageView.layer.cornerRadius =  self.headPhotoImageView.frame.size.width / 2.0;
-//    self.headPhotoImageView.clipsToBounds = YES;
-//    
-//    self.nameLabel.text = @"楊力怡";
-//    
-//    self.lastMessageLabel.text = @"last message";
-//    [self.lastMessageLabel sizeToFit];
-    
     UIImage *image = commentGroup.talkedUser.headPhoto;
     self.headPhotoImageView.image = image;
     self.headPhotoImageView.layer.cornerRadius =  self.headPhotoImageView.frame.size.width / 2.0;
@@ -41,7 +31,6 @@
     
     self.lastMessageLabel.text = commentGroup.comments[commentGroup.comments.count - 1][@"comment"];
     [self.lastMessageLabel sizeToFit];
-
 }
 
 @end
