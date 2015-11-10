@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *likeNumLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *headPhotoImageView;
 @property (weak, nonatomic) IBOutlet UIButton *nameButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pageControlHeightConstraint;
 
 @end
 
@@ -66,6 +67,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%s", __FUNCTION__);
+    NSLog(@"%@", self.showSkill);
     
     [self setPresentContent];
 }
@@ -73,7 +76,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"%s", __FUNCTION__);
-    [super viewWillAppear:animated];    
+    [super viewWillAppear:animated];
     
     //navigation setting
     self.navigationController.navigationBarHidden = NO;
@@ -92,7 +95,7 @@
     for(int i = 0; i < pageCount; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(width * i, 0, width, height)];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.image = self.showSkill.images[pageCount - 1 - i];
+        imageView.image = self.showSkill.images[i];
         [self.skillScrollView addSubview:imageView];
     }
     
@@ -102,19 +105,47 @@
     self.skillPageControl.hidesForSinglePage = YES;
     self.skillPageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.76 green:0.38 blue:0.33 alpha:1];
     self.skillPageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    
+    double heightOfPageControl = 25.0;
+    if (pageCount <= 1) {
+        heightOfPageControl = 4;
+    }
+    
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint
+                                            constraintWithItem:self.skillPageControl
+                                            attribute:NSLayoutAttributeHeight
+                                            relatedBy:NSLayoutRelationEqual
+                                            toItem:nil
+                                            attribute:NSLayoutAttributeHeight
+                                            multiplier:1
+                                            constant:heightOfPageControl];
+    
+    NSArray *constraints = @[heightConstraint];
+    
+    [self.view addConstraints:constraints];
 }
 
-//- (void)viewDidAppear:(BOOL)animated {
-//    NSLog(@"%s", __FUNCTION__);
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated {
-//    NSLog(@"%s", __FUNCTION__);
-//}
-//
-//- (void)viewDidDisappear:(BOOL)animated {
-//    NSLog(@"%s", __FUNCTION__);
-//}
+- (void)viewWillLayoutSubviews {
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)viewDidLayoutSubviews {
+    NSLog(@"%s", __FUNCTION__);
+    
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"%s", __FUNCTION__);
+    
+    if (self.skillPageControl.numberOfPages <= 1) {
+        self.pageControlHeightConstraint = 0;
+        [self.skillPageControl setNeedsUpdateConstraints];
+        [self.view setNeedsUpdateConstraints];
+        [self.skillPageControl layoutIfNeeded];
+        [self.view layoutIfNeeded];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -128,12 +159,7 @@
     [self.skillPageControl setCurrentPage:currentPage];
 }
 
-- (IBAction)followButtonPressed:(UIButton *)sender
-{
-    UIImage *buttonImage = [UIImage imageNamed:@"Heart Filled"];
-//    [self.followButton setImage:buttonImage forState:UIControlStateNormal];
-//    [self.followButton setImage:buttonImage forState:UIControlStateHighlighted];
-}
+
 - (IBAction)cancelButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -145,7 +171,6 @@
     }
     
 }
-
 
 #pragma mark - Navigation
 

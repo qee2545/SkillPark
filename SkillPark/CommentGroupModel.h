@@ -11,7 +11,7 @@
 @class UserModel;
 
 @interface CommentGroupModel : NSObject
-
+//ID, content, to
 @property (nonatomic) NSMutableArray<NSDictionary *> *comments;
 @property (nonatomic, weak) UserModel *talkedUser;
 

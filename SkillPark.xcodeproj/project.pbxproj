@@ -15,6 +15,10 @@
 		80002F431BE9A6CC001451F9 /* CategoryRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F421BE9A6CC001451F9 /* CategoryRecord.m */; settings = {ASSET_TAGS = (); }; };
 		80002F461BE9AB7B001451F9 /* ProfileRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F451BE9AB7B001451F9 /* ProfileRecord.m */; settings = {ASSET_TAGS = (); }; };
 		80002F4A1BE9AF60001451F9 /* CommentRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F491BE9AF60001451F9 /* CommentRecord.m */; settings = {ASSET_TAGS = (); }; };
+		80002F521BEA00ED001451F9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F511BEA00ED001451F9 /* User.m */; settings = {ASSET_TAGS = (); }; };
+		80002F551BEA0269001451F9 /* SkillCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F541BEA0269001451F9 /* SkillCategory.m */; settings = {ASSET_TAGS = (); }; };
+		80002F581BEA09FE001451F9 /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F571BEA09FE001451F9 /* Skill.m */; settings = {ASSET_TAGS = (); }; };
+		80002F5E1BEA0D2C001451F9 /* UserMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 80002F5D1BEA0D2C001451F9 /* UserMessage.m */; settings = {ASSET_TAGS = (); }; };
 		800167111BE8483B009DACB3 /* FollowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800167101BE8483B009DACB3 /* FollowTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		800167141BE84A13009DACB3 /* FollowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 800167131BE84A13009DACB3 /* FollowTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		8001673A1BE85DEA009DACB3 /* ProfileEditListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 800167391BE85DEA009DACB3 /* ProfileEditListTableViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -76,7 +80,15 @@
 		80002F481BE9AF60001451F9 /* CommentRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentRecord.h; sourceTree = "<group>"; };
 		80002F491BE9AF60001451F9 /* CommentRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentRecord.m; sourceTree = "<group>"; };
 		80002F4B1BE9B5BA001451F9 /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
-		80002F4F1BE9F79D001451F9 /* APIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIDelegate.h; sourceTree = "<group>"; };
+		80002F4F1BE9F79D001451F9 /* DownloadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadDelegate.h; sourceTree = "<group>"; };
+		80002F501BEA00ED001451F9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		80002F511BEA00ED001451F9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		80002F531BEA0269001451F9 /* SkillCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillCategory.h; sourceTree = "<group>"; };
+		80002F541BEA0269001451F9 /* SkillCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillCategory.m; sourceTree = "<group>"; };
+		80002F561BEA09FE001451F9 /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
+		80002F571BEA09FE001451F9 /* Skill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Skill.m; sourceTree = "<group>"; };
+		80002F5C1BEA0D2C001451F9 /* UserMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMessage.h; sourceTree = "<group>"; };
+		80002F5D1BEA0D2C001451F9 /* UserMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMessage.m; sourceTree = "<group>"; };
 		8001670F1BE8483B009DACB3 /* FollowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewController.h; sourceTree = "<group>"; };
 		800167101BE8483B009DACB3 /* FollowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewController.m; sourceTree = "<group>"; };
 		800167121BE84A13009DACB3 /* FollowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewCell.h; sourceTree = "<group>"; };
@@ -182,7 +194,7 @@
 				80002F421BE9A6CC001451F9 /* CategoryRecord.m */,
 				80002F3B1BE9A46A001451F9 /* CategoriesTable.h */,
 				80002F3C1BE9A46A001451F9 /* CategoriesTable.m */,
-				80002F4F1BE9F79D001451F9 /* APIDelegate.h */,
+				80002F4F1BE9F79D001451F9 /* DownloadDelegate.h */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -235,6 +247,14 @@
 		80040BE41BD78A6200963047 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80002F501BEA00ED001451F9 /* User.h */,
+				80002F511BEA00ED001451F9 /* User.m */,
+				80002F561BEA09FE001451F9 /* Skill.h */,
+				80002F571BEA09FE001451F9 /* Skill.m */,
+				80002F531BEA0269001451F9 /* SkillCategory.h */,
+				80002F541BEA0269001451F9 /* SkillCategory.m */,
+				80002F5C1BEA0D2C001451F9 /* UserMessage.h */,
+				80002F5D1BEA0D2C001451F9 /* UserMessage.m */,
 				80B7B7341BE2927400DF54CD /* CommentModel.h */,
 				80B7B7351BE2927400DF54CD /* CommentModel.m */,
 				8001B29B1BE1310400B8786F /* CategoryModel.h */,
@@ -481,11 +501,13 @@
 				80002F3A1BE9A40F001451F9 /* CommentsTable.m in Sources */,
 				80027AC01BE72508004DFACD /* SelfHeaderCollectionReusableView.m in Sources */,
 				80027AB71BE71B3E004DFACD /* SelfPersonCollectionViewController.m in Sources */,
+				80002F521BEA00ED001451F9 /* User.m in Sources */,
 				800167141BE84A13009DACB3 /* FollowTableViewCell.m in Sources */,
 				80002F401BE9A4EF001451F9 /* SkillRecord.m in Sources */,
 				802A41A21BE3478400367CBC /* CommentGroupModel.m in Sources */,
 				80002F371BE9A3F9001451F9 /* SkillsTable.m in Sources */,
 				80002F431BE9A6CC001451F9 /* CategoryRecord.m in Sources */,
+				80002F5E1BEA0D2C001451F9 /* UserMessage.m in Sources */,
 				802B4DBB1BDBF808004F127A /* TestViewController.m in Sources */,
 				80FC75081BDF7C63007E9831 /* SearchTableViewCell.m in Sources */,
 				800484B81BE081CF00D26ABC /* Utility.m in Sources */,
@@ -497,6 +519,7 @@
 				8040C24E1BDA067300B5FF23 /* SearchSkillTableViewController.m in Sources */,
 				80040BEA1BD78ABF00963047 /* UserModel.m in Sources */,
 				80002F3D1BE9A46A001451F9 /* CategoriesTable.m in Sources */,
+				80002F581BEA09FE001451F9 /* Skill.m in Sources */,
 				8021F9FE1BD7BD3E00C0E3BF /* PersonCollectionViewController.m in Sources */,
 				80FC750C1BDF9623007E9831 /* SelfMessageTableViewCell.m in Sources */,
 				80FC750F1BDF9645007E9831 /* MessageViewController.m in Sources */,
@@ -505,6 +528,7 @@
 				80040BC61BD7817C00963047 /* main.m in Sources */,
 				80040BE91BD78ABF00963047 /* SkillModel.m in Sources */,
 				8001673A1BE85DEA009DACB3 /* ProfileEditListTableViewController.m in Sources */,
+				80002F551BEA0269001451F9 /* SkillCategory.m in Sources */,
 				80040BD21BD7817C00963047 /* SkillPark.xcdatamodeld in Sources */,
 				80002F4A1BE9AF60001451F9 /* CommentRecord.m in Sources */,
 				8021FA011BD7BE6800C0E3BF /* PersonCollectionViewCell.m in Sources */,

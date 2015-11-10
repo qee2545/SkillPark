@@ -46,6 +46,8 @@ static NSString * const reuseIdentifier = @"SearchCell";
     for (SkillModel *skill in allSkills) {
         [contentList addObject:skill];
     }
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -186,6 +188,7 @@ static NSString * const reuseIdentifier = @"SearchCell";
     SkillModel *showSkill = sender;
     ShowSkillViewController *controller = [segue destinationViewController];
     controller.showSkill = showSkill;
+    controller.canNameButtonPressed = YES;
 }
 
 

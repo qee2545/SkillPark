@@ -33,7 +33,7 @@ static CGFloat const rightInset = 4.0;
 static CGFloat const minimumLineSpacing = 4.0;
 static CGFloat const minimumInteritemSpacing = 4.0;
 
-static CGFloat const skillColumnCount = 3.0;
+static CGFloat const skillColumnCount = 2.0;
 static CGFloat const categoryColumnCount = 3.0;
 
 - (void)viewDidLoad {
@@ -152,10 +152,10 @@ static CGFloat const categoryColumnCount = 3.0;
         //        NSLog(@"size %f", flowLayout.headerReferenceSize.height);
         
         UITapGestureRecognizer *personSkillTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(personSkillTaped:)];
-        [headerView.goodLabel addGestureRecognizer:personSkillTap];
+        [headerView.goodImageView addGestureRecognizer:personSkillTap];
         
         UITapGestureRecognizer *preferSkillTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(preferSkillTaped:)];
-        [headerView.learnLabel addGestureRecognizer:preferSkillTap];
+        [headerView.learnImageView addGestureRecognizer:preferSkillTap];
         
         return headerView;
     }

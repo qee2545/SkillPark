@@ -14,12 +14,17 @@
 #import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
 #import <AFNetworking/AFNetworking.h>
 
-@interface MainCollectionViewController () <CHTCollectionViewDelegateWaterfallLayout, APIDelegate>
+@interface MainCollectionViewController () <CHTCollectionViewDelegateWaterfallLayout>
 {   
     BOOL isAllUsersDownload;
     BOOL isAllSkillsDownload;
     BOOL isAllCommentsDownload;
     BOOL isAllCategoriesDownload;
+    
+    BOOL isDownloadFirstSkillImage;
+    BOOL isDownloadHeadPhoto;
+    
+    UIRefreshControl *refreshControl;
     
     AFHTTPRequestOperationManager *manger;
 }
@@ -38,32 +43,12 @@ static CGFloat const minimumColumnSpacing = 8.0;
 static CGFloat const minimumInteritemSpacing = 8.0;
 static CGFloat const columnCount = 2;
 
-
-- (UIImage *)setImage:(UIImage *)image fromURLString:(NSString *)urlStr
-{
-    __block UIImage *skillImage = image;
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
-                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                            timeoutInterval:30];
-    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
-    requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        skillImage = responseObject;
-//        NSLog(@"skillImage: %@", skillImage);
-//        NSLog(@"image: %@", image);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Image error: %@", error);
-    }];
-    [requestOperation start];
-    
-    return skillImage;
-}
-
 - (void)getAPIProfiles
 {
-    NSLog(@"%s", __FUNCTION__);
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicatorView];
+    activityIndicatorView.center = self.view.center;
+    [activityIndicatorView startAnimating];
     
     [manger GET:@"http://www.skillpark.co/api/v1/profiles" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSDictionary *apiDictionary = responseObject;
@@ -89,7 +74,7 @@ static CGFloat const columnCount = 2;
             user.followingNum = [favorited_users_count intValue];
             
             user.favorites = favorites;
-            NSLog(@"user.favorites:%@", user.favorites);
+//            NSLog(@"user.favorites:%@", user.favorites);
         
             if (categoryArray.count > 0) {
                 user.likedCategory = [[NSMutableArray alloc] init];
@@ -104,27 +89,34 @@ static CGFloat const columnCount = 2;
             }
             
             //download headphoto
-            NSURL *url = [NSURL URLWithString:user.headPhotoURL];
-            NSLog(@"url:%@", url);
-            NSLog(@"get headphoto %d", i);
-            NSData *data = [[NSData alloc] initWithContentsOfURL:url];
-            NSLog(@"get headphoto %d done", i);
-            user.headPhoto = [[UIImage alloc] initWithData:data];
+//            NSURL *url = [NSURL URLWithString:user.headPhotoURL];
+//            NSLog(@"url:%@", url);
+//            NSLog(@"get headphoto %d", i);
+//            NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+//            NSLog(@"get headphoto %d done", i);
+//            user.headPhoto = [[UIImage alloc] initWithData:data];
             
-            [user printInfo];
+//            [user printInfo];
             [allUsers addObject:user];
         }
         
-        isAllUsersDownload = YES;
-        [self finishAPIDownload];
+        NSDictionary *dic = @{@"finishedJob":@"APIProfiles"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"APIFinish" object:nil userInfo:dic];
+        [activityIndicatorView removeFromSuperview];
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);
+        [activityIndicatorView removeFromSuperview];
     }];
 }
 
 - (void)getAPISkills
 {
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicatorView];
+    activityIndicatorView.center = self.view.center;
+    [activityIndicatorView startAnimating];
+    
     [manger GET:@"http://www.skillpark.co/api/v1/skills" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
         NSDictionary *apiDictionary = responseObject;
@@ -168,33 +160,40 @@ static CGFloat const columnCount = 2;
             }
             
             //download skill images
-            if (skill.imagesURL.count > 0) {
-                skill.images = [[NSMutableArray alloc] init];
-            }
-            for (int i = 0; i < skill.imagesURL.count; i++) {
-                NSURL *url = [NSURL URLWithString:skill.imagesURL[i]];
-                NSLog(@"get image %d", i);
-                NSData *data = [[NSData alloc] initWithContentsOfURL:url];
-                NSLog(@"get image %d done", i);
-                UIImage *image = [[UIImage alloc] initWithData:data];
-                [skill.images addObject:image];
-            }
-            skill.image = skill.images[skill.images.count - 1];
+//            if (skill.imagesURL.count > 0) {
+//                skill.images = [[NSMutableArray alloc] init];
+//            }
+//            for (int i = 0; i < skill.imagesURL.count; i++) {
+//                NSURL *url = [NSURL URLWithString:skill.imagesURL[i]];
+//                NSLog(@"get image %d", i);
+//                NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+//                NSLog(@"get image %d done", i);
+//                UIImage *image = [[UIImage alloc] initWithData:data];
+//                [skill.images addObject:image];
+//            }
+//            skill.image = skill.images[0];
             
 //            [skill printInfo];
             [allSkills addObject:skill];
         }
         
-        isAllSkillsDownload = YES;
-        [self finishAPIDownload];
+        NSDictionary *dic = @{@"finishedJob":@"APISkills"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"APIFinish" object:nil userInfo:dic];
+        [activityIndicatorView removeFromSuperview];
   
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);
+        [activityIndicatorView removeFromSuperview];
     }];
 }
 
 - (void)getAPIComments
 {
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicatorView];
+    activityIndicatorView.center = self.view.center;
+    [activityIndicatorView startAnimating];
+    
     [manger GET:@"http://www.skillpark.co/api/v1/comments" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
         NSDictionary *apiDictionary = responseObject;
@@ -215,16 +214,23 @@ static CGFloat const columnCount = 2;
             [allComments addObject:comment];
         }
         
-        isAllCommentsDownload = YES;
-        [self finishAPIDownload];
+        NSDictionary *dic = @{@"finishedJob":@"APIComments"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"APIFinish" object:nil userInfo:dic];
+        [activityIndicatorView removeFromSuperview];
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);
+        [activityIndicatorView removeFromSuperview];
     }];
 }
 
 - (void)getAPICategory
 {
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicatorView];
+    activityIndicatorView.center = self.view.center;
+    [activityIndicatorView startAnimating];
+    
     [manger GET:@"http://www.skillpark.co/api/v1/categories" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
         NSDictionary *apiDictionary = responseObject;
@@ -249,11 +255,13 @@ static CGFloat const columnCount = 2;
             [allCategories addObject:category];
         }
         
-        isAllCategoriesDownload = YES;
-        [self finishAPIDownload];
+        NSDictionary *dic = @{@"finishedJob":@"APICategory"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"APIFinish" object:nil userInfo:dic];
+        [activityIndicatorView removeFromSuperview];
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);
+        [activityIndicatorView removeFromSuperview];
     }];
 }
 
@@ -267,7 +275,7 @@ static CGFloat const columnCount = 2;
                 break;
             }
         }
-        //loginUser = allUsers[1];
+//        loginUser = allUsers[1];
         
         for (UserModel *user in allUsers) {
 //            NSLog(@"==== user:%@  =====",user.name);
@@ -319,10 +327,10 @@ static CGFloat const columnCount = 2;
             for (CommentModel *comment in user.comments) {
                 NSDictionary *commentDic;
                 if ([user.name isEqualToString:comment.commentor]) {
-                    commentDic = @{@"comment": comment.content, @"to": @1};
+                    commentDic = @{@"ID": comment.ID, @"comment": comment.content, @"to": @1};
                 }
                 else {
-                    commentDic = @{@"comment": comment.content, @"to": @0};
+                    commentDic = @{@"ID": comment.ID, @"comment": comment.content, @"to": @0};
                 }
                 
                 if (user.commentsGroup == nil) {
@@ -373,21 +381,196 @@ static CGFloat const columnCount = 2;
             
         }
         
-        [self.collectionView reloadData];
+        [self downloadHeadPhoto];
+        [self downloadFirstSkillImage];
+        
     }
 }
 
-- (void)APITextDownloadFinished {
+- (void)downloadHeadPhoto {
     
+    NSMutableArray *mutableOperations = [NSMutableArray array];
+    for (UserModel *user in allUsers) {
+        NSURL *url = [NSURL URLWithString:user.headPhotoURL];
+        
+        AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]];
+        op.responseSerializer = [AFImageResponseSerializer serializer];
+        
+        [op setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead){
+            
+        }];
+        
+        op.completionBlock = ^{
+            NSLog(@"%@ head photo complete", user.name);
+        };
+        
+        [mutableOperations addObject:op];
+    }
+    
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicatorView];
+    activityIndicatorView.center = self.view.center;
+    [activityIndicatorView startAnimating];
+    
+    NSArray *batches = [AFURLConnectionOperation batchOfRequestOperations:mutableOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+        
+    } completionBlock:^(NSArray *operations) {
+        NSLog(@"all head photo download completion");
+        
+        for (int i = 0; i < operations.count; i++) {
+            AFHTTPRequestOperation * op = operations[i];
+            allUsers[i].headPhoto = op.responseObject;
+        }
+        
+        for (UserModel *user in allUsers) {
+            NSLog(@"%@ head photo:%@", user.name, user.headPhoto);
+        }
+        
+        NSDictionary *dic = @{@"finishedJob":@"headPhoto"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateUiNoti" object:nil userInfo:dic];
+        [activityIndicatorView removeFromSuperview];
+    }];
+    
+    [[NSOperationQueue mainQueue] addOperations:batches waitUntilFinished:NO];
 }
 
-- (void)APIImageDownloadFinished {
+- (void)downloadFirstSkillImage {
     
+    NSMutableArray *mutableOperations = [NSMutableArray array];
+    for (SkillModel *skill in allSkills) {
+        NSURL *url = [NSURL URLWithString:skill.imagesURL[0]];
+        
+        AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:url]];
+        op.responseSerializer = [AFImageResponseSerializer serializer];
+        
+        [op setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead){
+            
+        }];
+        
+        op.completionBlock = ^{
+            NSLog(@"%@ image 0 complete", skill.title);
+        };
+        
+        [mutableOperations addObject:op];
+    }
+    
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:activityIndicatorView];
+    activityIndicatorView.center = self.view.center;
+    [activityIndicatorView startAnimating];
+    
+    NSArray *batches = [AFURLConnectionOperation batchOfRequestOperations:mutableOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+        
+    } completionBlock:^(NSArray *operations) {
+        NSLog(@"all skill image 0 download completion");
+        
+        for (int i = 0; i < operations.count; i++) {
+            AFHTTPRequestOperation * op = operations[i];
+            allSkills[i].image = op.responseObject;
+            if (allSkills[i].images == nil) {
+                allSkills[i].images = [[NSMutableArray alloc] init];
+            }
+            [allSkills[i].images addObject:op.responseObject];
+        }
+        
+        for (SkillModel *skill in allSkills) {
+            NSLog(@"%@ image 0:%@", skill.title, skill.images[0]);
+        }
+        
+        NSDictionary *dic = @{@"finishedJob":@"firstSkill"};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateUiNoti" object:nil userInfo:dic];
+        [activityIndicatorView removeFromSuperview];
+    }];
+    
+    [[NSOperationQueue mainQueue] addOperations:batches waitUntilFinished:NO];
+}
+
+//- (void)didImageDownloadFinish {
+//    if (isDownloadHeadPhoto && isDownloadFirstSkillImage) {
+//        [self.collectionView reloadData];
+//        [self downloadOtherSkillImages];
+//    }
+//}
+
+- (void)downloadOtherSkillImages {
+    NSLog(@"downloadSkillImages");
+    for (int i = 0; i < allSkills.count; i++) {
+        SkillModel *skill = allSkills[i];
+        NSLog(@"Skill %d has %d images", i, skill.imagesURL.count);
+        for (int j = 1; j < skill.imagesURL.count; j++) {
+            if (skill.images == nil) {
+                skill.images = [[NSMutableArray alloc] init];
+            }
+            NSURL *url = [NSURL URLWithString:skill.imagesURL[j]];
+            NSURLRequest *urlRequest =  [NSURLRequest requestWithURL:url];
+            AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+            requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
+            [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"Response: %@", responseObject);
+                [skill.images addObject:responseObject];
+                //NSLog(@"images count:%d", skill.images.count);
+                
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Image error: %@", error);
+            }];
+            [requestOperation start];
+        }
+    }
+}
+
+- (void)APIFinish:(NSNotification*)noti {
+    NSDictionary *dic = noti.userInfo;
+    NSString *job = dic[@"finishedJob"];
+    if([job isEqualToString:@"APIProfiles"]) {
+        NSLog(@"noti:APIProfiles");
+        isAllUsersDownload = YES;
+    }
+    else if([job isEqualToString:@"APISkills"]) {
+        NSLog(@"noti:APISkills");
+        isAllSkillsDownload = YES;
+    }
+    else if([job isEqualToString:@"APIComments"]) {
+        NSLog(@"noti:APIComments");
+        isAllCommentsDownload = YES;
+    }
+    else if([job isEqualToString:@"APICategory"]) {
+        NSLog(@"noti:APICategory");
+        isAllCategoriesDownload = YES;
+    }
+    
+    if(isAllUsersDownload && isAllSkillsDownload && isAllCommentsDownload && isAllCategoriesDownload) {
+        [self finishAPIDownload];
+    }
+}
+
+- (void)updateUi:(NSNotification*)noti {
+    NSDictionary *dic = noti.userInfo;
+    NSString *job = dic[@"finishedJob"];
+    if([job isEqualToString:@"headPhoto"]) {
+        NSLog(@"noti:headPhoto");
+        isDownloadHeadPhoto = YES;
+        [self.collectionView reloadData];
+    }
+    else if([job isEqualToString:@"firstSkill"]) {
+        NSLog(@"noti:firstSkill");
+        isDownloadFirstSkillImage = YES;
+        [self.collectionView reloadData];
+    }
+
+
+    if (isDownloadHeadPhoto && isDownloadFirstSkillImage) {
+//        [self.collectionView reloadData];
+        [self downloadOtherSkillImages];
+    }
 }
 
 - (void)viewDidLoad {
     NSLog(@"%s", __FUNCTION__);
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(APIFinish:) name:@"APIFinish" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUi:) name:@"UpdateUiNoti" object:nil];
     
 //    NSURL *baseURL = [NSURL URLWithString:@"http://www.skillpark.co/"];
     manger = [[AFHTTPRequestOperationManager alloc] init];
@@ -396,6 +579,9 @@ static CGFloat const columnCount = 2;
     isAllSkillsDownload = NO;
     isAllCommentsDownload = NO;
     isAllCategoriesDownload = NO;
+    
+    isDownloadFirstSkillImage = NO;
+    isDownloadHeadPhoto = NO;
     
     allUsers = [[NSMutableArray alloc] init];
     [self getAPIProfiles];
@@ -409,6 +595,11 @@ static CGFloat const columnCount = 2;
     allCategories = [[NSMutableArray alloc] init];
     [self getAPICategory];
     
+    refreshControl = [[UIRefreshControl alloc] init];
+    [self.collectionView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(refresh:)
+             forControlEvents:UIControlEventValueChanged];
+    
 //    [self fakeData];
     [self setupCollectionView];
     [self registerNibs];
@@ -419,7 +610,7 @@ static CGFloat const columnCount = 2;
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
-    [self.collectionView reloadData];
+//    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -531,45 +722,19 @@ static CGFloat const columnCount = 2;
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 #pragma mark <CHTCollectionViewDelegateWaterfallLayout>
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%s", __FUNCTION__);
-    NSLog(@"====== row:%d =======", indexPath.row);
+//    NSLog(@"%s", __FUNCTION__);
+//    NSLog(@"====== row:%d =======", indexPath.row);
     
     //cell width
-    CGFloat contentWidth = collectionView.bounds.size.width - insetLeft - insetRight - minimumColumnSpacing;
+    CGFloat contentWidth = collectionView.bounds.size.width - insetLeft - insetRight - minimumColumnSpacing * (columnCount - 1);
     CGFloat cellWidth = contentWidth / columnCount;
+//    NSLog(@"cellWidth:%f", cellWidth);
 
     //NSLog(@"contentWidth:%f columnWidth:%f cellWidth:%f", contentWidth, columnWidth, cellWidth);
 
@@ -582,6 +747,12 @@ static CGFloat const columnCount = 2;
 //    NSLog(@"cellWidth:%f, cellHeight:%f", cellWidth, cellHeight);
     
     return CGSizeMake(cellWidth, cellHeight);
+}
+
+- (void)refresh:(UIRefreshControl *)sender {
+    NSLog(@"%s", __FUNCTION__);
+ 
+    [refreshControl endRefreshing];
 }
 
 @end

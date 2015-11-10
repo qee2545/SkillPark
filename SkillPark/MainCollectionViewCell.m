@@ -8,6 +8,8 @@
 
 #import "MainCollectionViewCell.h"
 #import "Utility.h"
+#import <AFNetworking/AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 
 @implementation MainCollectionViewCell
 
@@ -29,7 +31,8 @@
 - (void)setContentWithSkill:(SkillModel *)skill
 {
     //skill image
-    self.skillImageView.image = skill.image;
+//    self.skillImageView.image = skill.image;
+    self.skillImageView.image = skill.images[0];
     
     //title
     self.titleLabel.text = skill.title;
@@ -41,6 +44,21 @@
     self.headPhotoImageView.image = skill.owner.headPhoto;
     self.headPhotoImageView.layer.cornerRadius = self.headPhotoImageView.frame.size.width / 2.0;
     self.headPhotoImageView.clipsToBounds = YES;
+
+    
+//    NSURL *url = [NSURL URLWithString:skill.owner.headPhotoURL];
+//    NSURLRequest *urlRequest =  [NSURLRequest requestWithURL:url];
+//    [self.headPhotoImageView setImageWithURLRequest:urlRequest
+//                                   placeholderImage:nil
+//                                            success:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, UIImage *image) {
+//                                                NSLog(@"success:%@", response);
+//                                                self.headPhotoImageView.image = image;
+//                                                skill.owner.headPhoto = image;
+//                                            }
+//                                            failure:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, NSError *error) {
+//                                                NSLog(@"error:%@", response);
+//                                            }
+//     ];
     
     //name
     [self.nameButton setTitle:skill.owner.name forState:UIControlStateNormal];
@@ -73,8 +91,15 @@
     
     //descript height
     UIFont *descriptFont = self.descriptLabel.font;
-    CGSize descriptSize = [Utility labelSizeForString:@"description" withFontName:descriptFont.fontName withFontSize:descriptFont.pointSize withLimitWidth:cellWidth];
-    CGFloat descriptHeight = descriptSize.height * self.descriptLabel.numberOfLines;
+    CGSize oneLineDescriptSize = [Utility labelSizeForString:@"one" withFontName:descriptFont.fontName withFontSize:descriptFont.pointSize withLimitWidth:cellWidth];
+    CGSize descriptSize = [Utility labelSizeForString:skill.descript withFontName:descriptFont.fontName withFontSize:descriptFont.pointSize withLimitWidth:cellWidth];
+    
+    CGFloat limitDescriptHeight = oneLineDescriptSize.height * self.descriptLabel.numberOfLines;
+    
+    CGFloat descriptHeight = descriptSize.height;
+    if (descriptSize.height > limitDescriptHeight) {
+        descriptHeight = limitDescriptHeight;
+    }
     
     //NSLog(@"descriptSize.height:%f, cellStandard.descriptLabel.numberOfLines:%d", descriptSize.height, cellStandard.descriptLabel.numberOfLines);
     

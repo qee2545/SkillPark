@@ -16,6 +16,11 @@ NSMutableArray<SkillModel *> *allSkills;
 NSMutableArray<CommentModel *> *allComments;
 NSMutableArray<CategoryModel *> *allCategories;
 
+SkillsTable *skillsTable;
+ProfilesTable *profilesTable;
+CommentsTable *commentsTable;
+CategoriesTable *categoriesTable;
+
 @implementation Global
 
 + (Global *)sharedInstance

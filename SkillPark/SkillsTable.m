@@ -32,6 +32,8 @@
         NSDictionary *apiDictionary = responseObject;
         NSNumber *recordCount = apiDictionary[@"metadata"][@"total"];
         self.recordCount = recordCount;
+        
+        [self.skillRecords removeAllObjects];
         for (int i = 0 ; i < [recordCount intValue]; i++) {
             NSNumber *ID = apiDictionary[@"data"][i][@"id"];
             NSString *name = apiDictionary[@"data"][i][@"name"];
@@ -60,6 +62,8 @@
             
             [self.skillRecords addObject:skillRecord];
         }
+        
+        [self.delegate didFinishTableDownloadWithStyle:TableStyleSkill];
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);

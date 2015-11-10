@@ -32,6 +32,8 @@
         NSDictionary *apiDictionary = responseObject;
         NSNumber *recordCount = apiDictionary[@"metadata"][@"total"];
         self.recordCount = recordCount;
+        
+        [self.profileRecords removeAllObjects];
         for (int i = 0 ; i < [recordCount intValue]; i++) {
             NSNumber *ID = apiDictionary[@"data"][i][@"id"];
             NSString *username = apiDictionary[@"data"][i][@"username"];
@@ -48,6 +50,8 @@
             profileRecord.profileDescription = description;
             profileRecord.photo = photo;
             profileRecord.location = location;
+            
+            [profileRecord.category removeAllObjects];
             for (int j = 0; j < category.count; j++) {
                 CategoryRecord *categoryRecord = [[CategoryRecord alloc] init];
                 categoryRecord.ID = category[j][0];
@@ -55,7 +59,10 @@
                 categoryRecord.categoryIcon = category[j][2];
                 [profileRecord.category addObject:categoryRecord];
             }
+            
             profileRecord.favoritedUsersCount = favoritedUsersCount;
+            
+            [profileRecord.favorites removeAllObjects];
             for (int j = 0; j < favorites.count; j++) {
                 NSMutableArray *favorite = [[NSMutableArray alloc] init];
                 favorite[0] = favorites[j][0];
@@ -65,6 +72,8 @@
             
             [self.profileRecords addObject:profileRecord];
         }
+        
+        [self.delegate didFinishTableDownloadWithStyle:TableStyleProfile];
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);

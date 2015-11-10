@@ -22,7 +22,7 @@
 
 - (void)setContentWithSkill:(SkillModel *)skill
 {
-    self.skillImageView.image = skill.images[skill.images.count - 1];
+    self.skillImageView.image = skill.image;
     self.titleLabel.text = skill.title;
     if ([skill.owner.location length] > 0) {
         self.locationLabel.text = [NSString stringWithFormat:@"@%@", skill.owner.location];

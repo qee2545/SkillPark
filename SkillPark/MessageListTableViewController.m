@@ -37,6 +37,21 @@ static NSString * const reuseIdentifier = @"MessageListCell";
     self.tabBarController.tabBar.hidden = NO;
     
     [self.tableView reloadData];
+    
+    for (CommentGroupModel *cg in theUser.commentsGroup) {
+        UserModel *talkedUser = cg.talkedUser;
+        NSLog(@"****** %@ <-> %@ ******", theUser.name, talkedUser.name);
+        NSLog(@"msg count: %d", cg.comments.count);
+        for (NSDictionary *dic in cg.comments) {
+            NSString *content = dic[@"comment"];
+            if ([dic[@"to"] intValue] == 1) {
+                NSLog(@"id:%@ --> %@ : %@", dic[@"ID"], talkedUser.name, content);
+            }
+            else {
+                NSLog(@"id:%@ <-- %@ : %@", dic[@"ID"], talkedUser.name, content);
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

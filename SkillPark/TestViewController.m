@@ -9,10 +9,16 @@
 #import "TestViewController.h"
 #import <AFNetworking/AFNetworking.h>
 
-@interface TestViewController ()
+#import "DownloadDelegate.h"
+#import "Global.h"
+#import "User.h"
+
+@interface TestViewController () <DownloadDelegate>
 {
     AFHTTPRequestOperationManager *manger;
     NSDictionary* apiDictionary;
+    
+    NSUInteger tableDownload;
 }
 @end
 
@@ -24,7 +30,10 @@
     NSURL *baseURL = [NSURL URLWithString:@"http://139.162.15.196"];
     manger = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     
-    [self getData];
+    tableDownload = 0;
+    //[self getData];
+    
+    [self gggg];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,5 +84,59 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (void)test
+{
+    skillsTable = [[SkillsTable alloc] init];
+    skillsTable.delegate = self;
+    skillsTable.apiUrlStr = @"http://www.skillpark.co/api/v1/skills";
+    [skillsTable getData];
+    
+    profilesTable = [[ProfilesTable alloc] init];
+    profilesTable.delegate = self;
+    profilesTable.apiUrlStr = @"http://www.skillpark.co/api/v1/profiles";
+    [profilesTable getData];
+    
+    commentsTable = [[CommentsTable alloc] init];
+    commentsTable.delegate = self;
+    commentsTable.apiUrlStr = @"http://www.skillpark.co/api/v1/comments";
+    [commentsTable getData];
+    
+    categoriesTable = [[CategoriesTable alloc] init];
+    categoriesTable.delegate = self;
+    categoriesTable.apiUrlStr = @"http://www.skillpark.co/api/v1/categories";
+    [categoriesTable getData];
+}
+
+- (void)didFinishTableDownloadWithStyle:(NSUInteger)tableStyle {
+    tableDownload = tableDownload | tableStyle;
+    if (tableDownload == AllTableDownLoadFinished) {
+        [self constructUsers];
+    }
+}
+
+- (void)imageDownloadFinished {
+    
+}
+
+- (void)constructUsers {
+    int userCount = [profilesTable.recordCount intValue];
+    for (int i = 0; i < userCount; i++) {
+        User *user = [[User alloc] init];
+        user.ID = profilesTable.profileRecords[i].ID;
+        user.name = profilesTable.profileRecords[i].username;
+        user.location = profilesTable.profileRecords[i].location;
+        user.selfIntro = profilesTable.profileRecords[i].profileDescription;
+        
+        NSString *photoURLStr = profilesTable.profileRecords[i].photo;
+        
+        
+//
+//        @property (nonatomic) NSMutableArray<CategoryRecord*> *category;
+//        @property (nonatomic) NSNumber *favoritedUsersCount;
+//        @property (nonatomic) NSMutableArray<NSMutableArray*> *favorites;
+    }
+}
 
 @end

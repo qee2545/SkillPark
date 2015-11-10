@@ -60,7 +60,7 @@
     if (self.selfIntroLabel.text.length > 0) {
         selfIntroSize = [Utility labelSizeForString:self.selfIntroLabel.text withFontName:font.fontName withFontSize:font.pointSize withLimitWidth:self.selfIntroLabel.frame.size.width];
     }
-    CGFloat goodViewHeight = self.goodLabel.frame.size.height;
+    CGFloat goodViewHeight = self.goodImageView.frame.size.height;
     
     CGFloat heightComponent =  backgroundImageHeight + headPhotoImageHeight + selfIntroSize.height + goodViewHeight + 8;
     

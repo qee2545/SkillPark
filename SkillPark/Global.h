@@ -27,7 +27,7 @@ extern NSMutableArray<CategoryModel*> *allCategories;
 
 extern SkillsTable *skillsTable;
 extern ProfilesTable *profilesTable;
-extern CommentsTable *commnetsTable;
+extern CommentsTable *commentsTable;
 extern CategoriesTable *categoriesTable;
 
 

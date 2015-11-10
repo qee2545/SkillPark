@@ -36,7 +36,7 @@ static CGFloat const rightInset = 4.0;
 static CGFloat const minimumLineSpacing = 4.0;
 static CGFloat const minimumInteritemSpacing = 4.0;
 
-static CGFloat const skillColumnCount = 3.0;
+static CGFloat const skillColumnCount = 2.0;
 static CGFloat const categoryColumnCount = 3.0;
 
 
@@ -281,6 +281,7 @@ static CGFloat const categoryColumnCount = 3.0;
         NSLog(@"theUse:%@ name:%@, talkedUser:%@ name:%@", controller.theUser, controller.theUser.name, controller.talkedUser.name,controller.talkedUser);
     }
     else if ([segue.identifier isEqualToString:@"PersonToShowSkill"]) {
+        NSLog(@"PersonToShowSkill");
         NSIndexPath *indexPath = sender;
         ShowSkillViewController *controller = [segue destinationViewController];
         controller.showSkill = self.showUser.skills[indexPath.row];

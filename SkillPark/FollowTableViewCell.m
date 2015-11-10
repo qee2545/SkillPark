@@ -28,7 +28,7 @@
     
     self.followNameLabel.text = followUser.name;
     
-    self.followLocationLabel.text = followUser.location;
+    self.followLocationLabel.text = [NSString stringWithFormat:@"@%@", followUser.location];
 }
 
 @end

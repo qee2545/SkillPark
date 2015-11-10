@@ -36,6 +36,34 @@
     loginButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:loginButton];
     
+    
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint
+                                            constraintWithItem:loginButton
+                                            attribute:NSLayoutAttributeHeight
+                                            relatedBy:NSLayoutRelationEqual
+                                            toItem:nil
+                                            attribute:NSLayoutAttributeHeight
+                                            multiplier:1
+                                            constant:35];
+    
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint
+                                            constraintWithItem:loginButton
+                                            attribute:NSLayoutAttributeLeft
+                                            relatedBy:NSLayoutRelationEqual
+                                            toItem:self.view
+                                            attribute:NSLayoutAttributeLeft
+                                            multiplier:1
+                                            constant:35];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint
+                                            constraintWithItem:loginButton
+                                            attribute:NSLayoutAttributeRight
+                                            relatedBy:NSLayoutRelationEqual
+                                            toItem:self.view
+                                            attribute:NSLayoutAttributeRight
+                                            multiplier:1
+                                            constant:-35];
+    
     NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint
                                             constraintWithItem:loginButton
                                             attribute:NSLayoutAttributeBottom
@@ -53,11 +81,18 @@
                                              multiplier:1
                                              constant:0];
     
-    NSArray *constraints = @[bottomConstraint, centerXConstraint];
+    NSArray *constraints = @[heightConstraint, leftConstraint,rightConstraint, bottomConstraint, centerXConstraint];
     
     [self.view addConstraints:constraints];
     
-    [self fbLoginChcek];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([self checkNetwork]) {
+        [self fbLoginChcek];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,15 +100,39 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)checkNetwork {
+    NSString *host = @"www.apple.com";
+    SCNetworkReachabilityRef  reachability = SCNetworkReachabilityCreateWithName(nil, host.UTF8String);
+    SCNetworkReachabilityFlags flags;
+    BOOL result = NO;
+    if(reachability) {
+        result = SCNetworkReachabilityGetFlags(reachability, &flags);
+        CFRelease(reachability);
+    }
+    
+    NSLog(@"%d %d", result, flags);
+    
+    if(!result || !flags) {
+        NSLog(@"無網路");
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"No Internet Connection!"preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alertController addAction:cancelButton];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return FALSE;
+    }
+    else {
+        NSLog(@"有網路");
+    }
+    
+    return TRUE;
 }
-*/
 
 - (void)fbLoginChcek
 {
@@ -98,6 +157,7 @@
             
             NSLog(@"name:%@", userName);
             NSLog(@"email:%@", userEmail);
+            NSLog(@"fbToken:%@",fbToken.tokenString);
             
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
             NSDictionary *parameters = @{@"access_token": fbToken.tokenString};
