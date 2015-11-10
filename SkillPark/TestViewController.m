@@ -32,8 +32,6 @@
     
     tableDownload = 0;
     //[self getData];
-    
-    [self gggg];
 }
 
 - (void)didReceiveMemoryWarning {
