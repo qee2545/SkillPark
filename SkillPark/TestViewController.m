@@ -27,16 +27,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURL *baseURL = [NSURL URLWithString:@"http://139.162.15.196"];
-    manger = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+    //NSURL *baseURL = [NSURL URLWithString:@"http://139.162.15.196"];
+    //manger = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     
     tableDownload = 0;
     //[self getData];
+    [self AFNDownload];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)AFNDownload
+{
+    NSURL *url = [NSURL URLWithString:@"http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AV&CaseNo2=1&FileType=1&Lang=C&FolderType=O"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFHTTPRequestOperation *operation =[[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSArray *responseArray = (NSArray *)responseObject;
+        for (int i = 0 ; i < responseArray.count; i++) {
+            NSDictionary *dic = responseArray[i];
+            NSLog(@"%d - Name: %@", i, dic[@"Name"]);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    }];
+    [operation start];
 }
 
 - (void)getData

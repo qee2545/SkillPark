@@ -470,11 +470,14 @@ static CGFloat const columnCount = 2;
             if (allSkills[i].images == nil) {
                 allSkills[i].images = [[NSMutableArray alloc] init];
             }
-            [allSkills[i].images addObject:op.responseObject];
+            if (op.responseObject) {
+                [allSkills[i].images addObject:op.responseObject];
+            }
+            
         }
         
         for (SkillModel *skill in allSkills) {
-            NSLog(@"%@ image 0:%@", skill.title, skill.images[0]);
+            //NSLog(@"%@ image 0:%@", skill.title, skill.images[0]);
         }
         
         NSDictionary *dic = @{@"finishedJob":@"firstSkill"};

@@ -31,8 +31,8 @@
 - (void)setContentWithSkill:(SkillModel *)skill
 {
     //skill image
-//    self.skillImageView.image = skill.image;
-    self.skillImageView.image = skill.images[0];
+    self.skillImageView.image = skill.image;
+    //self.skillImageView.image = skill.images[0];
     
     //title
     self.titleLabel.text = skill.title;

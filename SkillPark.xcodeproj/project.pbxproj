@@ -220,7 +220,7 @@
 		80040BC31BD7817C00963047 /* SkillPark */ = {
 			isa = PBXGroup;
 			children = (
-				802B4DB81BDBF6EF004F127A /* Controllers */,
+				802B4DB81BDBF6EF004F127A /* Controller */,
 				80040BEB1BD78BF300963047 /* Cell */,
 				800484B91BE082C500D26ABC /* Class */,
 				80002F471BE9AE72001451F9 /* Table */,
@@ -323,7 +323,7 @@
 			name = Storyboard;
 			sourceTree = "<group>";
 		};
-		802B4DB81BDBF6EF004F127A /* Controllers */ = {
+		802B4DB81BDBF6EF004F127A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				8040C24C1BDA067300B5FF23 /* SearchSkillTableViewController.h */,
@@ -349,7 +349,7 @@
 				800167381BE85DEA009DACB3 /* ProfileEditListTableViewController.h */,
 				800167391BE85DEA009DACB3 /* ProfileEditListTableViewController.m */,
 			);
-			name = Controllers;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		83C8567A3EFFF3B58D06AA29 /* Frameworks */ = {

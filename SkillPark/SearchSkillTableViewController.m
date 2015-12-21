@@ -25,17 +25,21 @@ static NSString * const reuseIdentifier = @"SearchCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    contentList = [[NSMutableArray alloc] initWithObjects:@"ruby on rails", @"iOS", @"handicraft", @"rails", @"Objective-C", @"swift",@"iphone", @"ruby", @"on", nil];
+
     contentList = [[NSMutableArray alloc] init];
     filteredContentList = [[NSMutableArray alloc] init];
     
     [self registerNibs];
+    
+    //original tableview setting
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.estimatedRowHeight = 70.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    //serch tableview setting
+    self.searchDisplayController.searchResultsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.searchDisplayController.searchResultsTableView.estimatedRowHeight = 70.0;
-    self.searchDisplayController.searchResultsTableView .rowHeight = UITableViewAutomaticDimension;
+    self.searchDisplayController.searchResultsTableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,7 +61,6 @@ static NSString * const reuseIdentifier = @"SearchCell";
 
 - (void)registerNibs
 {
-    // attach the UI nib file for the ImageUICollectionViewCell to the collectionview
     UINib *cellNib = [UINib nibWithNibName:@"SearchTableViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:reuseIdentifier];
     [self.searchDisplayController.searchResultsTableView registerNib:cellNib forCellReuseIdentifier:reuseIdentifier];
@@ -85,15 +88,11 @@ static NSString * const reuseIdentifier = @"SearchCell";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         SkillModel *skill = filteredContentList[indexPath.row];
         [cell setContentWithSkill:skill];
-//        cell.titleLabel.text = [filteredContentList objectAtIndex:indexPath.row];
     }
     else {
         SkillModel *skill = contentList[indexPath.row];
         [cell setContentWithSkill:skill];
-//        cell.titleLabel.text = [contentList objectAtIndex:indexPath.row];
     }
-    
-//    cell.textLabel.text = [contentList objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -102,41 +101,13 @@ static NSString * const reuseIdentifier = @"SearchCell";
 {
     SkillModel *showSkill;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        NSLog(@"search display row:%d %@", indexPath.row, [filteredContentList objectAtIndex:indexPath.row]);
         showSkill = [filteredContentList objectAtIndex:indexPath.row];
     }
     else {
-        NSLog(@"normal display row:%d %@", indexPath.row, [contentList objectAtIndex:indexPath.row]);
         showSkill = [contentList objectAtIndex:indexPath.row];
     }
     
     [self performSegueWithIdentifier:@"SearchToShowSkill" sender:showSkill];
-}
-
-- (void)filterContentForSearchText:(NSString *)searchText
-{
-    [filteredContentList removeAllObjects];
-    
-    for (SkillModel *skill in contentList) {
-        //search title
-        NSString *titleStr = skill.title;
-        NSComparisonResult resultOfTitle = [titleStr compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-        if (resultOfTitle == NSOrderedSame) {
-            [filteredContentList addObject:skill];
-            continue;
-        }
-        
-        //search category
-        for (CategoryModel *category in skill.belongCategory) {
-            NSString *categoryStr = category.name;
-            NSComparisonResult resultOfCategory = [categoryStr compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-            if (resultOfCategory == NSOrderedSame) {
-                [filteredContentList addObject:skill];
-                break;
-            }
-        }
-    }
-    NSLog(@"%@", filteredContentList);
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
@@ -145,44 +116,34 @@ static NSString * const reuseIdentifier = @"SearchCell";
     return true;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)filterContentForSearchText:(NSString *)searchText
+{
+    [filteredContentList removeAllObjects];
+    
+    for (SkillModel *skill in contentList) {
+        
+        //search title
+        NSString *titleStr = skill.title;
+        NSComparisonResult resultOfTitle = [titleStr compare:searchText options:(NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+        if (resultOfTitle == NSOrderedSame) {
+            [filteredContentList addObject:skill];
+            continue;   //title match, no need to search category
+        }
+        
+        //search category
+        for (CategoryModel *category in skill.belongCategory) {
+            NSString *categoryStr = category.name;
+            NSComparisonResult resultOfCategory = [categoryStr compare:searchText options:(NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+            if (resultOfCategory == NSOrderedSame) {
+                [filteredContentList addObject:skill];
+                break;
+            }
+        }
+    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     SkillModel *showSkill = sender;

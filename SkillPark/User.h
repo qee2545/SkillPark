@@ -22,7 +22,6 @@
 @property (nonatomic) NSMutableArray<Skill*> *skills;
 @property (nonatomic) NSMutableArray<SkillCategory*> *likeCategories;
 @property (nonatomic) NSMutableArray<__weak User*> *favoriteUsers;
-
 @property (nonatomic) NSMutableArray<__weak User*> *everTalkedUsers;
 @property (nonatomic) NSMutableArray<UserMessage*> *messages;
 
