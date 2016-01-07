@@ -20,10 +20,9 @@
     // Configure the view for the selected state
 }
 
-- (void)setContentWithMessage:(NSString *)message
-{
+- (void)setContentWithMessage:(NSString *)message {
     self.messageWrapView.layer.cornerRadius = 10.0f;
-    self.messageWrapView.backgroundColor = [UIColor colorWithRed:0.74 green:0.95 blue:0.53 alpha:1];//[UIColor whiteColor];
+    self.messageWrapView.backgroundColor = [UIColor colorWithRed:0.74 green:0.95 blue:0.53 alpha:1];
     self.messageWrapView.clipsToBounds = YES;
     
     self.messageLabel.text = message;

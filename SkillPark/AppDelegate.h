@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "UserModel.h"
-#import "SkillModel.h"
-#import "CategoryModel.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -22,7 +19,6 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-
 
 @end
 

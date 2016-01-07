@@ -12,5 +12,5 @@
 @interface SkillCategory : NSObject
 @property (nonatomic) NSNumber *ID;
 @property (nonatomic) NSString *name;
-@property (nonatomic) UIImage *image;
+@property (nonatomic) NSString *iconURL;
 @end

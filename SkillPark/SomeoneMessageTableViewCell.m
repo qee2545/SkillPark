@@ -20,10 +20,19 @@
     // Configure the view for the selected state
 }
 
-- (void)setContentWithUser:(UserModel *)user andMessage:(NSString *)message
-{
-    UIImage *image = user.headPhoto;
-    self.headPhotoImageView.image = image;
+- (void)setContentWithUser:(User *)user andMessage:(NSString *)message {
+    NSURL *url = [NSURL URLWithString:user.headPhotoURL];
+    NSURLRequest *urlRequest =  [NSURLRequest requestWithURL:url];
+    [self.headPhotoImageView setImageWithURLRequest:urlRequest
+                                   placeholderImage:nil
+                                            success:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, UIImage *image) {
+                                                //NSLog(@"success:%@", response);
+                                                self.headPhotoImageView.image = image;
+                                            }
+                                            failure:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, NSError *error) {
+                                                //NSLog(@"error:%@", response);
+                                            }
+    ];
     self.headPhotoImageView.layer.cornerRadius =  self.headPhotoImageView.frame.size.width / 2.0;
     self.headPhotoImageView.clipsToBounds = YES;
 
@@ -31,7 +40,7 @@
     //self.nameLabel.textColor = [UIColor whiteColor];
     
     self.messageWrapView.layer.cornerRadius = 10.0f;
-    self.messageWrapView.backgroundColor = [UIColor colorWithRed:0.89 green:0.91 blue:0.92 alpha:1];//[UIColor whiteColor];
+    self.messageWrapView.backgroundColor = [UIColor colorWithRed:0.89 green:0.91 blue:0.92 alpha:1];
     self.messageWrapView.clipsToBounds = YES;
     [self.messageWrapView sizeToFit];
     

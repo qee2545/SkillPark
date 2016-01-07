@@ -9,6 +9,7 @@
 #import "FollowTableViewController.h"
 #import "FollowTableViewCell.h"
 #import "PersonCollectionViewController.h"
+#import "Global.h"
 
 @interface FollowTableViewController ()
 
@@ -44,30 +45,28 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return loginUser.followUsers.count;
+    return loginUser.favoriteUsers.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FollowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FollowCell" forIndexPath:indexPath];
     
-    [cell setContentWithUser:loginUser.followUsers[indexPath.row]];
+    [cell setContentWithUser:loginUser.favoriteUsers[indexPath.row]];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"FollowToPerson" sender:indexPath];
 }
-
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSIndexPath *indexPath = sender;
     PersonCollectionViewController *controller = [segue destinationViewController];
-    controller.showUser = loginUser.followUsers[indexPath.row];
+    controller.showUser = loginUser.favoriteUsers[indexPath.row];
 }
 
 @end

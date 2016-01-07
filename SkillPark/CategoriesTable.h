@@ -11,11 +11,10 @@
 #import "DownloadDelegate.h"
 
 @interface CategoriesTable : NSObject
-
 @property (nonatomic) NSNumber *recordCount;
 @property (nonatomic) NSMutableArray<CategoryRecord*> *categoryRecords;
 @property (nonatomic) NSString *apiUrlStr;
 @property (nonatomic, weak) id<DownloadDelegate> delegate;
 
-- (void)getData;
+- (void)downloadData;
 @end

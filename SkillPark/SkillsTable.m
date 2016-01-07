@@ -20,14 +20,11 @@
     return _skillRecords;
 }
 
-- (void)getData
-{
-    NSLog(@"%s", __FUNCTION__);
-    
+- (void)downloadData {
     AFHTTPRequestOperationManager *manger = [[AFHTTPRequestOperationManager alloc] init];
     
     [manger GET:self.apiUrlStr parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id _Nonnull responseObject) {
-        NSLog(@"Success %@", responseObject);
+        //NSLog(@"Success %@", responseObject);
         
         NSDictionary *apiDictionary = responseObject;
         NSNumber *recordCount = apiDictionary[@"metadata"][@"total"];
@@ -55,16 +52,18 @@
             CategoryRecord *categoryRecord = [[CategoryRecord alloc] init];
             categoryRecord.ID = category[0][0];
             categoryRecord.name = category[0][1];
-            categoryRecord.categoryIcon = category[0][2];
+            categoryRecord.categoryIconURL = category[0][2];
             skillRecord.category = categoryRecord;
-            skillRecord.pictures = pictures;
+            for (int i = 0; i < pictures.count; i++) {
+                [skillRecord.pictures addObject:pictures[i][@"url"]];
+            }
             skillRecord.likedUsersCount = likedUsersCount;
             
             [self.skillRecords addObject:skillRecord];
         }
         
+        NSLog(@"Skill table download success");
         [self.delegate didFinishTableDownloadWithStyle:TableStyleSkill];
-        
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);
     }];

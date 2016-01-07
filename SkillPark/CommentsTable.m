@@ -11,8 +11,7 @@
 
 @implementation CommentsTable
 
-- (NSMutableArray *)commentRecords
-{
+- (NSMutableArray *)commentRecords {
     if (!_commentRecords) {
         _commentRecords = [[NSMutableArray alloc] init];
     }
@@ -20,14 +19,11 @@
     return _commentRecords;
 }
 
-- (void)getData
-{
-    NSLog(@"%s", __FUNCTION__);
-    
+- (void)downloadData {   
     AFHTTPRequestOperationManager *manger = [[AFHTTPRequestOperationManager alloc] init];
     
     [manger GET:self.apiUrlStr parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id _Nonnull responseObject) {
-        NSLog(@"Success %@", responseObject);
+        //NSLog(@"Success %@", responseObject);
         
         NSDictionary *apiDictionary = responseObject;
         NSNumber *recordCount = apiDictionary[@"metadata"][@"total"];
@@ -49,8 +45,8 @@
             [self.commentRecords addObject:commentRecord];
         }
         
+        NSLog(@"Comment table download success");
         [self.delegate didFinishTableDownloadWithStyle:TableStyleComment];
-        
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);
     }];

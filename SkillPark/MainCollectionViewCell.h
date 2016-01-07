@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SkillModel.h"
+#import "Global.h"
 
 @interface MainCollectionViewCell : UICollectionViewCell
-
 @property (weak, nonatomic) IBOutlet UIImageView *skillImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptLabel;
@@ -18,13 +17,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *nameButton;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likeNumLabel;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headPhotoTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headPhotoBottomConstraint;
 
 - (void)resetContent;
-- (void)setContentWithSkill:(SkillModel *)skill;
-- (CGFloat) cellHeightForSkill:(SkillModel *)skill withLimitWidth:(CGFloat)cellWidth;
+- (void)setContentWithSkill:(Skill *)skill;
+- (CGFloat) cellHeightForSkill:(Skill *)skill withLimitWidth:(CGFloat)cellWidth;
 @end

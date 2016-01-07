@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
@@ -22,13 +21,12 @@
     
     //set tab bar color
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.76 green:0.38 blue:0.33 alpha:1]];
-//    [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
     
     //set naviagtion bar color
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.76 green:0.38 blue:0.33 alpha:1]];
+    //kick off the navigation return button text
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor colorWithRed:0.76 green:0.38 blue:0.33 alpha:1] forKey:NSForegroundColorAttributeName]];
-    
     
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
@@ -39,10 +37,8 @@
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
-    return [[FBSDKApplicationDelegate sharedInstance] application:
-            application
+         annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];

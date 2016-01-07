@@ -11,8 +11,7 @@
 
 @implementation ProfilesTable
 
-- (NSMutableArray *)profileRecords
-{
+- (NSMutableArray *)profileRecords {
     if (!_profileRecords) {
         _profileRecords = [[NSMutableArray alloc] init];
     }
@@ -20,14 +19,11 @@
     return _profileRecords;
 }
 
-- (void)getData
-{
-    NSLog(@"%s", __FUNCTION__);
-    
+- (void)downloadData {
     AFHTTPRequestOperationManager *manger = [[AFHTTPRequestOperationManager alloc] init];
     
     [manger GET:self.apiUrlStr parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id _Nonnull responseObject) {
-        NSLog(@"Success %@", responseObject);
+        //NSLog(@"Success %@", responseObject);
         
         NSDictionary *apiDictionary = responseObject;
         NSNumber *recordCount = apiDictionary[@"metadata"][@"total"];
@@ -56,7 +52,7 @@
                 CategoryRecord *categoryRecord = [[CategoryRecord alloc] init];
                 categoryRecord.ID = category[j][0];
                 categoryRecord.name = category[j][1];
-                categoryRecord.categoryIcon = category[j][2];
+                categoryRecord.categoryIconURL = category[j][2];
                 [profileRecord.category addObject:categoryRecord];
             }
             
@@ -73,8 +69,8 @@
             [self.profileRecords addObject:profileRecord];
         }
         
+        NSLog(@"Profile table download success");
         [self.delegate didFinishTableDownloadWithStyle:TableStyleProfile];
-        
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);
     }];

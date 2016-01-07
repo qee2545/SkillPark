@@ -14,9 +14,8 @@
 
 @interface SelfPersonCollectionViewController ()
 {
-    UserModel *theUser;
+    User *theUser;
     BOOL isShowPersonSkill;
-
 }
 @end
 
@@ -51,10 +50,7 @@ static CGFloat const categoryColumnCount = 3.0;
 
 #pragma mark <UICollectionViewDelegateFlowLayout>
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    //    NSLog(@"%s", __FUNCTION__);
-    
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (!isShowPersonSkill) {
         double categoryWidth = ([UIScreen mainScreen].bounds.size.width - leftInset - rightInset - minimumInteritemSpacing * (categoryColumnCount - 1)) / categoryColumnCount;
         
@@ -67,44 +63,34 @@ static CGFloat const categoryColumnCount = 3.0;
     return CGSizeMake(skillWidth, skillHeight);
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    //    NSLog(@"%s", __FUNCTION__);
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(topInset, leftInset, buttomInset, rightInset);
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    //    NSLog(@"%s", __FUNCTION__);
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return minimumLineSpacing;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    //    NSLog(@"%s", __FUNCTION__);
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return minimumInteritemSpacing;
 }
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-//#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of items
     if (isShowPersonSkill) {
         return theUser.skills.count;
     }
     
-    return theUser.likedCategory.count;
+    return theUser.likeCategories.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    //    NSLog(@"%s", __FUNCTION__);
-    
     SelfPersonCollectionViewCell *personCell = [collectionView dequeueReusableCellWithReuseIdentifier:selfPersonReuseIdentifier forIndexPath:indexPath];
     
     if (isShowPersonSkill) {
@@ -113,7 +99,7 @@ static CGFloat const categoryColumnCount = 3.0;
     else {
         SelfPreferCollectionViewCell *preferCell = [collectionView dequeueReusableCellWithReuseIdentifier:selfPreferReuseIdentifier forIndexPath:indexPath];
         
-        [preferCell setPreferCellWithCategory:theUser.likedCategory[indexPath.row]];
+        [preferCell setPreferCellWithCategory:theUser.likeCategories[indexPath.row]];
         
         return preferCell;
     }
@@ -121,13 +107,11 @@ static CGFloat const categoryColumnCount = 3.0;
     return personCell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"SelfPersonToShowSkill" sender:indexPath];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"SelfPersonToShowSkill"]) {
         NSIndexPath *indexPath = sender;
         ShowSkillViewController *controller = [segue destinationViewController];
@@ -137,10 +121,7 @@ static CGFloat const categoryColumnCount = 3.0;
 }
 
 // The view that is returned must be retrieved from a call to -dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    //    NSLog(@"%s indexPath:%@", __FUNCTION__, indexPath);
-    
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         SelfHeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SelfHeaderView" forIndexPath:indexPath];
         
@@ -149,13 +130,12 @@ static CGFloat const categoryColumnCount = 3.0;
         //adjust header height
         UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
         flowLayout.headerReferenceSize = [headerView sizeOfHeaderView];
-        //        NSLog(@"size %f", flowLayout.headerReferenceSize.height);
-        
+  
         UITapGestureRecognizer *personSkillTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(personSkillTaped:)];
         [headerView.goodImageView addGestureRecognizer:personSkillTap];
         
-        UITapGestureRecognizer *preferSkillTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(preferSkillTaped:)];
-        [headerView.learnImageView addGestureRecognizer:preferSkillTap];
+        UITapGestureRecognizer *preferedSkillTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(preferedSkillTaped:)];
+        [headerView.learnImageView addGestureRecognizer:preferedSkillTap];
         
         return headerView;
     }
@@ -166,26 +146,18 @@ static CGFloat const categoryColumnCount = 3.0;
 #pragma make - tap
 
 - (void)personSkillTaped:(id)sender {
-    NSLog(@"%s", __FUNCTION__);
-    NSLog(@"%@", sender);
-    
     BOOL isPreShowPersonSkill = isShowPersonSkill;
     isShowPersonSkill = YES;
     if (isShowPersonSkill != isPreShowPersonSkill) {
-        //        [self.collectionView reloadData];
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
         [self.collectionView reloadSections:indexSet];
     }
 }
 
-- (void)preferSkillTaped:(id)sender {
-    NSLog(@"%s", __FUNCTION__);
-    NSLog(@"%@", sender);
-    
+- (void)preferedSkillTaped:(id)sender {
     BOOL isPreShowPersonSkill = isShowPersonSkill;
     isShowPersonSkill = NO;
     if (isShowPersonSkill != isPreShowPersonSkill) {
-        //        [self.collectionView reloadData];
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
         [self.collectionView reloadSections:indexSet];
     }

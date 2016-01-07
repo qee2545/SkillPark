@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserModel.h"
-#import "CommentGroupModel.h"
 #import "Global.h"
 
 @interface PersonCollectionViewController : UICollectionViewController
-@property (nonatomic) UserModel *showUser;
+@property (nonatomic) User *showUser;
 @end

@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CommentGroupModel.h"
-#import "UserModel.h"
+#import "Global.h"
 
 @interface MessageListTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headPhotoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
 
-- (void)setContentWithCommentGroup:(CommentGroupModel *)commentGroup;
+- (void)setContentWithMessages:(Message *)lastMessage;
 @end

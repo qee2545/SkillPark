@@ -8,11 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Enum.h"
-#import "SkillsTable.h"
-#import "ProfilesTable.h"
-#import "CommentsTable.h"
-#import "CategoriesTable.h"
 
 @interface Utility : NSObject
 

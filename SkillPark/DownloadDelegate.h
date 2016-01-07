@@ -18,10 +18,7 @@ typedef NS_ENUM(NSUInteger, TableStyle) {
 #define AllTableDownLoadFinished 0x00001111
 
 @protocol DownloadDelegate <NSObject>
-
 - (void)didFinishTableDownloadWithStyle:(NSUInteger)tableStyle;
-- (void)imageDownloadFinished;
-
 @end
 
 #endif /* APIDelegate_h */

@@ -24,6 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *learnImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *messageImageView;
 
-- (void)setHeaderViewWithUser:(UserModel *)user;
+- (void)setHeaderViewWithUser:(User *)user;
 - (CGSize)sizeOfHeaderView;
 @end

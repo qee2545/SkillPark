@@ -7,29 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UserModel.h"
-#import "SkillModel.h"
-#import "CommentModel.h"
-#import "CategoryModel.h"
-
+#import <AFNetworking/AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 #import "SkillsTable.h"
 #import "ProfilesTable.h"
 #import "CommentsTable.h"
 #import "CategoriesTable.h"
+#import "User.h"
+#import "Skill.h"
+#import "SkillCategory.h"
+#import "Message.h"
 
 extern NSString *webTokenStr;
 extern NSString *loginUserName;
-extern UserModel* loginUser;
-extern NSMutableArray<UserModel*> *allUsers;
-extern NSMutableArray<SkillModel*> *allSkills;
-extern NSMutableArray<CommentModel*> *allComments;
-extern NSMutableArray<CategoryModel*> *allCategories;
+extern User *loginUser;
 
-extern SkillsTable *skillsTable;
 extern ProfilesTable *profilesTable;
-extern CommentsTable *commentsTable;
+extern SkillsTable *skillsTable;
 extern CategoriesTable *categoriesTable;
+extern CommentsTable *commentsTable;
 
+extern NSMutableArray<User*> *users;
+extern NSMutableArray<Skill*> *skills;
+extern NSMutableArray<SkillCategory*> *skillCategories;
+extern NSMutableArray<Message*> *messages;
 
 @interface Global : NSObject
 {
@@ -37,4 +38,5 @@ extern CategoriesTable *categoriesTable;
 }
 
 + (Global *)sharedInstance;
++ (NSMutableArray *)selectMessagesBetweenUser:(User *)user1 andUser:(User *)user2;
 @end

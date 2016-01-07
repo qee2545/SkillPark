@@ -10,8 +10,7 @@
 
 @implementation SkillRecord
 
-- (NSMutableArray *)pictures
-{
+- (NSMutableArray *)pictures {
     if (!_pictures) {
         _pictures = [[NSMutableArray alloc] init];
     }

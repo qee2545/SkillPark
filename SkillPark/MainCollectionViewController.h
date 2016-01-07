@@ -7,11 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserModel.h"
-#import "SkillModel.h"
-#import "CategoryModel.h"
-#import "CommentModel.h"
-#import "CommentGroupModel.h"
 #import "Global.h"
 
 @interface MainCollectionViewController : UICollectionViewController

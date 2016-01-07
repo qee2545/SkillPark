@@ -10,10 +10,9 @@
 
 @implementation SelfPersonCollectionViewCell
 
-- (void)setPersonCellWithSkill:(SkillModel *)skill
-{
-    self.titleLabel.text = skill.title;
-    self.skillImageView.image = skill.image;
+- (void)setPersonCellWithSkill:(Skill *)skill {
+    self.titleLabel.text = skill.name;
+    self.skillImageView.image = skill.presentImage;
 }
 
 @end

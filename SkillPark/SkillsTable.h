@@ -11,11 +11,10 @@
 #import "DownloadDelegate.h"
 
 @interface SkillsTable : NSObject
-
 @property (nonatomic) NSNumber *recordCount;
 @property (nonatomic) NSMutableArray<SkillRecord*> *skillRecords;
 @property (nonatomic) NSString *apiUrlStr;
 @property (nonatomic, weak) id<DownloadDelegate> delegate;
 
-- (void)getData;
+- (void)downloadData;
 @end

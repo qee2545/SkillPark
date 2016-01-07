@@ -13,5 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
 
-- (void)setPreferCellWithCategory:(CategoryModel *)category;
+- (void)setPreferCellWithCategory:(SkillCategory *)category;
 @end

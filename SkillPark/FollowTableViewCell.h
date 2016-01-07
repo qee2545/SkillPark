@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserModel.h"
+#import "Global.h"
 
 @interface FollowTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *followHeadImageView;
 @property (weak, nonatomic) IBOutlet UILabel *followNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followLocationLabel;
 
-- (void)setContentWithUser:(UserModel *)followUser;
+- (void)setContentWithUser:(User *)followUser;
 @end

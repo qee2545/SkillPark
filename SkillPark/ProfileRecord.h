@@ -10,7 +10,6 @@
 #import "CategoryRecord.h"
 
 @interface ProfileRecord : NSObject
-
 @property (nonatomic) NSNumber *ID;
 @property (nonatomic) NSString *username;
 @property (nonatomic) NSString *profileDescription;
@@ -19,5 +18,4 @@
 @property (nonatomic) NSMutableArray<CategoryRecord*> *category;
 @property (nonatomic) NSNumber *favoritedUsersCount;
 @property (nonatomic) NSMutableArray<NSMutableArray*> *favorites;
-
 @end

@@ -11,8 +11,7 @@
 
 @implementation CategoriesTable
 
-- (NSMutableArray *)categoryRecords
-{
+- (NSMutableArray *)categoryRecords {
     if (!_categoryRecords) {
         _categoryRecords = [[NSMutableArray alloc] init];
     }
@@ -20,14 +19,11 @@
     return _categoryRecords;
 }
 
-- (void)getData
-{
-    NSLog(@"%s", __FUNCTION__);
-    
+- (void)downloadData {
     AFHTTPRequestOperationManager *manger = [[AFHTTPRequestOperationManager alloc] init];
     
     [manger GET:self.apiUrlStr parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id _Nonnull responseObject) {
-        NSLog(@"Success %@", responseObject);
+        //NSLog(@"Success %@", responseObject);
         
         NSDictionary *apiDictionary = responseObject;
         NSNumber *recordCount = apiDictionary[@"metadata"][@"total"];
@@ -42,13 +38,13 @@
             CategoryRecord *categoryRecord = [[CategoryRecord alloc] init];
             categoryRecord.ID = ID;
             categoryRecord.name = name;
-            categoryRecord.categoryIcon = categoryIcon;
+            categoryRecord.categoryIconURL = categoryIcon;
             
             [self.categoryRecords addObject:categoryRecord];
         }
         
+        NSLog(@"Category table download success");
         [self.delegate didFinishTableDownloadWithStyle:TableStyleCategory];
-        
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"Error %@", error);
     }];

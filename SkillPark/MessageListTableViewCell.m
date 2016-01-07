@@ -20,16 +20,31 @@
     // Configure the view for the selected state
 }
 
-- (void)setContentWithCommentGroup:(CommentGroupModel *)commentGroup;
-{
-    UIImage *image = commentGroup.talkedUser.headPhoto;
-    self.headPhotoImageView.image = image;
+- (void)setContentWithMessages:(Message *)lastMessage {
+    User *talkedUser;
+    if (lastMessage.fromUser == loginUser) {
+        talkedUser = lastMessage.toUser;
+    }
+    else {
+        talkedUser = lastMessage.fromUser;
+    }
+    
+    NSURL *url = [NSURL URLWithString:talkedUser.headPhotoURL];
+    NSURLRequest *urlRequest =  [NSURLRequest requestWithURL:url];
+    [self.headPhotoImageView setImageWithURLRequest:urlRequest
+                                   placeholderImage:nil
+                                            success:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, UIImage *image) {
+                                                //NSLog(@"success:%@", response);
+                                                self.headPhotoImageView.image = image;
+                                            }
+                                            failure:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, NSError *error) {
+                                                //NSLog(@"error:%@", response);
+                                            }
+    ];    
     self.headPhotoImageView.layer.cornerRadius =  self.headPhotoImageView.frame.size.width / 2.0;
     self.headPhotoImageView.clipsToBounds = YES;
-    
-    self.nameLabel.text = commentGroup.talkedUser.name;
-    
-    self.lastMessageLabel.text = commentGroup.comments[commentGroup.comments.count - 1][@"comment"];
+    self.nameLabel.text = talkedUser.name;
+    self.lastMessageLabel.text = lastMessage.message;
     [self.lastMessageLabel sizeToFit];
 }
 

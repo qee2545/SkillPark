@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserModel.h"
+#import "Global.h"
 
 @interface SomeoneMessageTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headPhotoImageView;
@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UIView *messageWrapView;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
-- (void)setContentWithUser:(UserModel *)user andMessage:(NSString *)message;
+- (void)setContentWithUser:(User *)user andMessage:(NSString *)message;
 @end

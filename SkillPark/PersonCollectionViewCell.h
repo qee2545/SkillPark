@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SkillModel.h"
+#import "Global.h"
 
 @interface PersonCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *skillImageView;
 
-//- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes;
-
-- (void)setPersonCellWithSkill:(SkillModel *)skill;
+- (void)setPersonCellWithSkill:(Skill *)skill;
 @end

@@ -20,16 +20,14 @@
     // Configure the view for the selected state
 }
 
-- (void)setContentWithSkill:(SkillModel *)skill
-{
-    self.skillImageView.image = skill.image;
-    self.titleLabel.text = skill.title;
+- (void)setContentWithSkill:(Skill *)skill {
+    self.skillImageView.image = skill.presentImage;
+    self.titleLabel.text = skill.name;
     if ([skill.owner.location length] > 0) {
         self.locationLabel.text = [NSString stringWithFormat:@"@%@", skill.owner.location];
     }
     else {
         self.locationLabel.text = @"";
     }
-    
 }
 @end

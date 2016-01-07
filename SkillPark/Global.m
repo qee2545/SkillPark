@@ -10,16 +10,17 @@
 
 NSString *webTokenStr;
 NSString *loginUserName;
-UserModel *loginUser;
-NSMutableArray<UserModel *> *allUsers;
-NSMutableArray<SkillModel *> *allSkills;
-NSMutableArray<CommentModel *> *allComments;
-NSMutableArray<CategoryModel *> *allCategories;
+User *loginUser;
 
 SkillsTable *skillsTable;
 ProfilesTable *profilesTable;
 CommentsTable *commentsTable;
 CategoriesTable *categoriesTable;
+
+NSMutableArray<User*> *users;
+NSMutableArray<Skill*> *skills;
+NSMutableArray<SkillCategory*> *skillCategories;
+NSMutableArray<Message*> *messages;
 
 @implementation Global
 
@@ -33,6 +34,18 @@ CategoriesTable *categoriesTable;
     });
     
     return myInstance;
+}
+
++ (NSMutableArray *)selectMessagesBetweenUser:(User *)user1 andUser:(User *)user2 {
+    NSMutableArray *answerMessages = [[NSMutableArray alloc] init];
+    for (Message *message in messages) {
+        if ( ((message.fromUser == user1) && (message.toUser == user2)) ||
+             ((message.fromUser == user2) && (message.toUser == user1)) ) {
+            [answerMessages addObject:message];
+        }
+    }
+    
+    return answerMessages;
 }
 
 @end

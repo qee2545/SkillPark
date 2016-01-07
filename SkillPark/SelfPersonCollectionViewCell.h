@@ -13,5 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *skillImageView;
 
-- (void)setPersonCellWithSkill:(SkillModel *)skill;
+- (void)setPersonCellWithSkill:(Skill *)skill;
 @end

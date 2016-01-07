@@ -11,10 +11,20 @@
 
 @implementation HeaderCollectionReusableView
 
-- (void)setHeaderViewWithUser:(UserModel *)user
-{
+- (void)setHeaderViewWithUser:(User *)user {
     //head photo
-    self.headPhotoImageView.image = user.headPhoto;
+    NSURL *url = [NSURL URLWithString:user.headPhotoURL];
+    NSURLRequest *urlRequest =  [NSURLRequest requestWithURL:url];
+    [self.headPhotoImageView setImageWithURLRequest:urlRequest
+                                   placeholderImage:nil
+                                            success:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, UIImage *image) {
+                                                //NSLog(@"success:%@", response);
+                                                self.headPhotoImageView.image = image;
+                                            }
+                                            failure:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, NSError *error) {
+                                                //NSLog(@"error:%@", response);
+                                            }
+    ];
     self.headPhotoImageView.layer.cornerRadius =  self.headPhotoImageView.frame.size.width / 2.0;
     self.headPhotoImageView.clipsToBounds = YES;
     
@@ -30,12 +40,12 @@
     }
     
     //self intro
-    self.selfIntroLabel.text = user.descript;
+    self.selfIntroLabel.text = user.selfIntro;
 }
 
 - (CGSize)sizeOfHeaderView
 {
-    CGFloat width = self.headerView.frame.size.width;
+//    CGFloat width = self.headerView.frame.size.width;
     
     //constraint height
     CGFloat heightConstraints = 0;
@@ -52,7 +62,6 @@
     if (self.selfIntroLabel.text.length > 0) {
         selfIntroSize = [Utility labelSizeForString:self.selfIntroLabel.text withFontName:font.fontName withFontSize:font.pointSize withLimitWidth:self.selfIntroLabel.frame.size.width];
     }
-    //CGFloat buttonHeight = self.goodButton.frame.size.height;
     CGFloat buttonHeight = self.goodImageView.frame.size.height;
     
     CGFloat heightComponent =  imageHeight + nameHeight + locationHeight + selfIntroSize.height + buttonHeight + 16;

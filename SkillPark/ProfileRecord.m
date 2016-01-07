@@ -10,8 +10,7 @@
 
 @implementation ProfileRecord
 
-- (NSMutableArray *)category
-{
+- (NSMutableArray *)category {
     if (!_category) {
         _category = [[NSMutableArray alloc] init];
     }
@@ -19,8 +18,7 @@
     return _category;
 }
 
-- (NSMutableArray *)favorites
-{
+- (NSMutableArray *)favorites {
     if (!_favorites) {
         _favorites = [[NSMutableArray alloc] init];
     }

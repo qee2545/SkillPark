@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SkillModel.h"
+#import "Global.h"
 
 @interface SearchTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *skillImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
-- (void)setContentWithSkill:(SkillModel *)skill;
+- (void)setContentWithSkill:(Skill *)skill;
 @end

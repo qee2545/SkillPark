@@ -10,10 +10,20 @@
 #import "Utility.h"
 
 @implementation SelfHeaderCollectionReusableView
-- (void)setHeaderViewWithUser:(UserModel *)user
-{
+- (void)setHeaderViewWithUser:(User *)user {
     //head photo
-    self.headPhotoImageView.image = user.headPhoto;
+    NSURL *url = [NSURL URLWithString:user.headPhotoURL];
+    NSURLRequest *urlRequest =  [NSURLRequest requestWithURL:url];
+    [self.headPhotoImageView setImageWithURLRequest:urlRequest
+                                   placeholderImage:nil
+                                            success:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, UIImage *image) {
+                                                //NSLog(@"success:%@", response);
+                                                self.headPhotoImageView.image = image;
+                                            }
+                                            failure:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, NSError *error) {
+                                                //NSLog(@"error:%@", response);
+                                            }
+    ];
     self.headPhotoImageView.layer.cornerRadius =  self.headPhotoImageView.frame.size.width / 2.0;
     self.headPhotoImageView.layer.borderWidth = 2.0f;
     self.headPhotoImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
@@ -31,7 +41,7 @@
     }
     
     //self intro
-    self.selfIntroLabel.text = user.descript;
+    self.selfIntroLabel.text = user.selfIntro;
     
     //good label
     self.goodLabel.layer.borderWidth = 1.0f;
@@ -44,7 +54,7 @@
 
 - (CGSize)sizeOfHeaderView
 {
-    CGFloat width = self.headerView.frame.size.width;
+//    CGFloat width = self.headerView.frame.size.width;
     
     //constraint height
     CGFloat heightConstraints = 0;

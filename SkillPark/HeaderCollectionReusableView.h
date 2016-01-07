@@ -7,13 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserModel.h"
-
-@protocol HeaderCollectionReusableViewDelegate <NSObject>
-
-- (void) personSkillTaped;
-- (void) perferSkillTaped;
-@end
+#import "Global.h"
 
 @interface HeaderCollectionReusableView : UICollectionReusableView
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *heightConstraints;
@@ -26,8 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *learnImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *messageImageView;
 
-
-- (void)setHeaderViewWithUser:(UserModel *)user;
+- (void)setHeaderViewWithUser:(User *)user;
 - (CGSize)sizeOfHeaderView;
-//- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes;
 @end

@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserModel.h"
-#import "CommentGroupModel.h"
 #import "Global.h"
 
 @interface MessageViewController : UIViewController
-@property (nonatomic) UserModel *theUser;
-@property (nonatomic) CommentGroupModel *commentGroup;
-@property (nonatomic) UserModel *talkedUser;
+@property (nonatomic) User *theUser;
+@property (nonatomic) NSMutableArray *messages;
+@property (nonatomic) User *talkedUser;
 @end

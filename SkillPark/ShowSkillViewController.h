@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SkillModel.h"
+#import "Global.h"
 
 @interface ShowSkillViewController : UIViewController
-@property (nonatomic) SkillModel* showSkill;
+@property (nonatomic) Skill* showSkill;
 @property (nonatomic) BOOL canNameButtonPressed;
 @end

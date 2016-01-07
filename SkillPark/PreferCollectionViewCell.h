@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CategoryModel.h"
+#import "Global.h"
 
 @interface PreferCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
 
-- (void)setPreferCellWithCategory:(CategoryModel *)category;
+- (void)setPreferCellWithCategory:(SkillCategory *)category;
 @end

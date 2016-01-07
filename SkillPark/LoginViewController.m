@@ -7,12 +7,10 @@
 //
 
 #import "LoginViewController.h"
-
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
-
-#import <AFNetworking/AFNetworking.h>
+#import "Global.h"
 
 
 @interface LoginViewController () <FBSDKLoginButtonDelegate>
@@ -21,7 +19,6 @@
     NSString *userName;
     NSString *userEmail;
 }
-
 @end
 
 @implementation LoginViewController
@@ -35,7 +32,6 @@
     
     loginButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:loginButton];
-    
     
     NSLayoutConstraint *heightConstraint = [NSLayoutConstraint
                                             constraintWithItem:loginButton
@@ -84,7 +80,6 @@
     NSArray *constraints = @[heightConstraint, leftConstraint,rightConstraint, bottomConstraint, centerXConstraint];
     
     [self.view addConstraints:constraints];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -110,8 +105,6 @@
         CFRelease(reachability);
     }
     
-    NSLog(@"%d %d", result, flags);
-    
     if(!result || !flags) {
         NSLog(@"無網路");
         
@@ -134,8 +127,7 @@
     return TRUE;
 }
 
-- (void)fbLoginChcek
-{
+- (void)fbLoginChcek {
     fbToken = [FBSDKAccessToken currentAccessToken];
     
     if (fbToken) {
@@ -143,21 +135,18 @@
     }
 }
 
-- (void)fbLogin
-{
-    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"picture, name, email"}] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-        
+- (void)fbLogin {
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+                                       parameters:@{@"fields": @"picture, name, email"}]
+     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             userName = result[@"name"];
             userEmail = result[@"email"];
-            //            NSString *pictureURL = result[@"picture"][@"data"][@"url"];
-            //            NSData  *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:pictureURL]];
+//            NSString *pictureURL = result[@"picture"][@"data"][@"url"];
+//            NSData  *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:pictureURL]];
             
             loginUserName = userName;
-            
-            NSLog(@"name:%@", userName);
-            NSLog(@"email:%@", userEmail);
-            NSLog(@"fbToken:%@",fbToken.tokenString);
+            NSLog(@"login user:%@", loginUserName);
             
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
             NSDictionary *parameters = @{@"access_token": fbToken.tokenString};
@@ -176,10 +165,7 @@
 
 - (void)loginButton:(FBSDKLoginButton *)loginButton
 didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
-              error:(NSError *)error
-{
-    NSLog(@"%s", __FUNCTION__);
-    
+              error:(NSError *)error {
     if (!error) {
         fbToken = result.token;
         [FBSDKAccessToken setCurrentAccessToken:fbToken];
@@ -188,14 +174,10 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
     }
 }
 
-- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
-{
-    NSLog(@"%s", __FUNCTION__);
-    
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
     loginUserName = @"";
     loginUser = nil;
     webTokenStr = @"";
 }
-
 
 @end

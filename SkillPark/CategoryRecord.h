@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CategoryRecord : NSObject
-
 @property (nonatomic) NSNumber *ID;
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSString *categoryIcon;
-
+@property (nonatomic) NSString *categoryIconURL;
 @end

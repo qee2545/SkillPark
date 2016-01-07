@@ -13,7 +13,6 @@
 
 @interface SearchSkillTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 {
-    // Data
     NSMutableArray *contentList;
     NSMutableArray *filteredContentList;
 }
@@ -47,7 +46,7 @@ static NSString * const reuseIdentifier = @"SearchCell";
     [super viewWillAppear:animated];
     
     [contentList removeAllObjects];
-    for (SkillModel *skill in allSkills) {
+    for (Skill *skill in skills) {
         [contentList addObject:skill];
     }
     
@@ -86,11 +85,11 @@ static NSString * const reuseIdentifier = @"SearchCell";
     SearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        SkillModel *skill = filteredContentList[indexPath.row];
+        Skill *skill = filteredContentList[indexPath.row];
         [cell setContentWithSkill:skill];
     }
     else {
-        SkillModel *skill = contentList[indexPath.row];
+        Skill *skill = contentList[indexPath.row];
         [cell setContentWithSkill:skill];
     }
     
@@ -99,7 +98,7 @@ static NSString * const reuseIdentifier = @"SearchCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SkillModel *showSkill;
+    Skill *showSkill;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         showSkill = [filteredContentList objectAtIndex:indexPath.row];
     }
@@ -120,37 +119,32 @@ static NSString * const reuseIdentifier = @"SearchCell";
 {
     [filteredContentList removeAllObjects];
     
-    for (SkillModel *skill in contentList) {
-        
+    for (Skill *skill in contentList) {
         //search title
-        NSString *titleStr = skill.title;
+        NSString *titleStr = skill.name;
         NSComparisonResult resultOfTitle = [titleStr compare:searchText options:(NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
         if (resultOfTitle == NSOrderedSame) {
             [filteredContentList addObject:skill];
-            continue;   //title match, no need to search category
+            continue;   //name match, no need to search category
         }
         
         //search category
-        for (CategoryModel *category in skill.belongCategory) {
-            NSString *categoryStr = category.name;
-            NSComparisonResult resultOfCategory = [categoryStr compare:searchText options:(NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-            if (resultOfCategory == NSOrderedSame) {
-                [filteredContentList addObject:skill];
-                break;
-            }
+        SkillCategory *category = skill.belongCategory;
+        NSString *categoryStr = category.name;
+        NSComparisonResult resultOfCategory = [categoryStr compare:searchText options:(NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+        if (resultOfCategory == NSOrderedSame) {
+            [filteredContentList addObject:skill];
         }
     }
 }
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    SkillModel *showSkill = sender;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    Skill *showSkill = sender;
     ShowSkillViewController *controller = [segue destinationViewController];
     controller.showSkill = showSkill;
     controller.canNameButtonPressed = YES;
 }
-
 
 @end

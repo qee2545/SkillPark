@@ -10,10 +10,20 @@
 
 @implementation SelfPreferCollectionViewCell
 
-- (void)setPreferCellWithCategory:(CategoryModel *)category
-{
+- (void)setPreferCellWithCategory:(SkillCategory *)category {
     self.categoryLabel.text = category.name;
-    self.categoryImageView.image = category.image;
+    NSURL *url = [NSURL URLWithString:category.iconURL];
+    NSURLRequest *urlRequest =  [NSURLRequest requestWithURL:url];
+    [self.categoryImageView setImageWithURLRequest:urlRequest
+                                  placeholderImage:nil
+                                           success:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, UIImage *image) {
+                                               //NSLog(@"success:%@", response);
+                                               self.categoryImageView.image = image;
+                                           }
+                                           failure:^(NSURLRequest *request, NSHTTPURLResponse * __nullable response, NSError *error) {
+                                               //NSLog(@"error:%@", response);
+                                           }
+    ];
 }
 
 @end
